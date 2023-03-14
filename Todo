@@ -1,0 +1,8 @@
+1. Save book monitors to local storage.
+2. Change todo list so that it comes out from the right side as a sidebar.
+3. Change position of bday message (maybe the message overwrites the displayMsg)
+4. Improve commenting on JS files and improve readability.
+6. fix issue with overflow when adding too many todos.
+7. Think about creating render functions that handle the rendering of html only.
+8. Ensure that the favicon.ico file exists in the root directory of your website. If it does not exist, you can create one using an online favicon generator tool or an image editor.
+9. Find a way to center display message with points grid.
