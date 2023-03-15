@@ -28,8 +28,8 @@ function handlePointsClick(pointsId) {
         return student.uuid === pointsId
     })[0]
     targetStudentObj.points++
-    const audio = new Audio()
-    audio.src = "./"
+    const pointsAudio = new Audio("./audio/points.mp3")
+    pointsAudio.play() 
 
     if (targetStudentObj.points === 11) {
         targetStudentObj.points = 0
