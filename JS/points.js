@@ -13,7 +13,7 @@ function handleAvatarClick(avatarId) {
         targetStudentObj.avatarIndex = 0;
     }
 
-    const avatarIconArr = ["images/icon1.jpg", "images/icon2.jpg", "images/icon3.jpg"];
+    const avatarIconArr = ["images/harry-potter.png","images/hermione.png","images/draco-malfoy.png","images/lord-voldemort.png", "images/ron-weasley.png", "images/albus-dumbledore.png", "images/minerva-mcgonagall.png", "images/dobby.png"]
     targetStudentObj.avatarIndex = (targetStudentObj.avatarIndex + 1) % avatarIconArr.length;
     targetStudentObj.avatar = avatarIconArr[targetStudentObj.avatarIndex];
 
