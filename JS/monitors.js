@@ -22,7 +22,6 @@ function closeRandomiser() {
 }
 
 function getRandomStudent() {
-    console.log("clicked")
     const studentNameArr = []
     studentData.map((student) => {
         if (!selectedStudents.includes(student.name)) {
