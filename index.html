@@ -72,10 +72,13 @@
                 <li>
                     <button id="open-todo-btn" class="material-symbols-outlined tool-bar-btn open-todo-btn">checklist</button>
                 </li>
+                <li>
+                    <button id="add-student-btn" class="material-symbols-outlined tool-bar-btn add-student-btn">person_add</button>
+                </li>
             </div>
 
             <div id="timer" class="timer display-none">
-                <div class="timer-top">
+                <div class="timer-top tool-top">
                     <input id="countdown-input" class="countdown-input" placeholder="0" type="number" min="1"></input>
                     <button id="close-timer-btn" class="material-symbols-outlined close-timer-btn close-btn">close</button>
                 </div>
@@ -96,7 +99,7 @@
             </div>
 
             <div id="book-monitor-randomiser" class="book-monitor-randomiser display-none">
-                <div class="randomiser-top">
+                <div class="randomiser-top tool-top">
                     <h1 class="book-monitor-heading">Book monitors</h1>
                     <button id="close-randomiser-btn" class="material-symbols-outlined close-randomiser-btn close-btn">close</button>
                 </div>
@@ -126,21 +129,38 @@
                     </div>
                 </button>
                 <button class="book-monitor-reset-btn" id="book-monitor-reset-btn">Reset</button>
-            </div>  
-        </div>
-
-        <div id="todo-list" class="todo-list display-none">
-            <div class="todo-list-top">
-                <h1 class="todo-list-heading">To do</h1>
-                <button id="close-todo-btn" class="material-symbols-outlined close-todo-btn close-btn">close</button>
             </div>
-            
-            <form id="todo-list-form" class="todo-list-form">
-                <input id="todo-list-input" class="todo-list-input" type="text" placeholder="What do you have planned?">
-                <input type="submit" id="submit-todo" class="submit-todo" value="Add task">
-            </form>
 
-            <div id="todo-item-list"></div>
+            <div id="todo-list" class="todo-list display-none">
+                <div class="todo-list-top tool-top">
+                    <h1 class="todo-list-heading">To do</h1>
+                    <button id="close-todo-btn" class="material-symbols-outlined close-todo-btn close-btn">close</button>
+                </div>
+                
+                <form id="todo-list-form" class="todo-list-form">
+                    <input id="todo-list-input" class="todo-list-input" type="text" placeholder="What do you have planned?">
+                    <input type="submit" id="submit-todo" class="submit-todo" value="Add task">
+                </form>
+    
+                <div id="todo-item-list"></div>
+            </div>
+
+            <form id="add-student-form" class="add-student-form display-none">
+                <div class="add-student-form-top tool-top">
+                    <h1 class="add-student-form-heading">Add New Student</h1>
+                    <button id="close-add-student-form-btn" class="material-symbols-outlined close-todo-btn close-btn">close</button>
+                </div>
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+                <br>
+                <label for="dob">Date of Birth:</label>
+                <input type="date" id="dob" name="dob" required>
+                <br>
+                <label for="class-name">Class Name:</label>
+                <input type="text" id="class-name" name="class-name" required>
+                <br>
+                <button type="submit">Add Student</button>
+              </form>
         </div>
     </footer>
 

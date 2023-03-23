@@ -6,3 +6,5 @@
 7. Think about creating render functions that handle the rendering of html only.
 8. Ensure that the favicon.ico file exists in the root directory of your website. If it does not exist, you can create one using an online favicon generator tool or an image editor.
 9. Find a way to center display message with points grid.
+10. Remove HTML classes (timer-top, randomiser-top, todolist-top, add-student-form-top if not needed).
+11. Find a way to remove a specific student from studentData array.

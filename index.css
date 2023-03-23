@@ -1,7 +1,13 @@
 :root {
-    --text-color: #FAF9F6;
-    --icon-color: #5065A8;
-    --background-color: linear-gradient( 109.6deg,  rgba(253,199,141,1) 11.3%, rgba(249,143,253,1) 100.2% );
+    --text-clr: #FAF9F6;
+    --secondary-text-clr: #00000;
+    --icon-clr: #5065A8;
+    --icon-clr-hover: rgb(232, 199, 13);
+    --background-clr: linear-gradient( 109.6deg,  rgba(253,199,141,1) 11.3%, rgba(249,143,253,1) 100.2% );
+    --grid-box-clr: radial-gradient( circle 1224px at 10.6% 8.8%,  rgba(255,255,255,1) 0%, rgba(153,202,251,1) 100.2% );
+    --points-box-clr: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
+    --footer-background-clr: linear-gradient(to bottom, #EFEFEF, #F7F7F7);
+    --tool-background-clr: radial-gradient( circle 1224px at 10.6% 8.8%,  rgba(255,255,255,1) 0%, rgba(153,202,251,1) 100.2% );
 }
 
 *, *::before, *::after {
@@ -14,7 +20,7 @@ body {
     font-family: 'Roboto', sans-serif;
     font-size: 16px;
     background-color: #fff;
-    background-image: var(--background-color);
+    background-image: var(--background-clr);
     background-size: cover;
     background-repeat: no-repeat;
 }
@@ -33,6 +39,7 @@ a {
 
 img {
     max-width: 100%;
+    user-select: none;
 }
 
 /* Typography */
@@ -85,11 +92,11 @@ header {
 }
 
 .nav-link {
-    color: var(--text-color);
+    color: var(--text-clr);
     font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
     font-size: 1rem;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
     user-select: none;
 }
 
@@ -112,7 +119,7 @@ header {
 .hamburger-btn .bar {
     height: 3px;
     width: 100%;
-    background-color: var(--text-color);
+    background-color: var(--text-clr);
     border-radius: 10px;
 }
 
@@ -127,14 +134,14 @@ header {
 
 .greeting-message {
     order: 1;
-    color: var(--text-color);
+    color: var(--text-clr);
     text-transform: capitalize;
     /* margin-right: 3.6em; */
 }
 
 .display-date {
     order: 0;
-    color: var(--text-color);
+    color: var(--text-clr);
     font-size: 1.3rem;
 }
 
@@ -144,7 +151,7 @@ header {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    color: var(--text-color);
+    color: var(--text-clr);
 }
 
 .weather-location {
@@ -180,15 +187,16 @@ header {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 1em;
-    margin-bottom: 8em;
+    margin-bottom: 6em;
 }
 
 .student-div {
     position: relative;
     text-align: center;
-    background-image: radial-gradient( circle 1224px at 10.6% 8.8%,  rgba(255,255,255,1) 0%, rgba(153,202,251,1) 100.2% );
     font-weight: 700;
+    color: var(--secondary-text-clr);   
     padding: 2em;
+    background-image: var(--grid-box-clr);
     -webkit-box-shadow: 0px 0px 7px 0px rgba(0,0,0,0.75);
     -moz-box-shadow: 0px 0px 7px 0px rgba(0,0,0,0.75);
     box-shadow: 0px 0px 7px 0px rgba(0,0,0,0.75);   
@@ -196,7 +204,7 @@ header {
 }
 
 .points-icon-btn {
-    color: var(--icon-color);
+    color: var(--icon-clr);
     position: absolute;
     top: 0.3em;
     right: 0;
@@ -214,7 +222,16 @@ header {
 }
 
 .points-icon-btn:hover {
-    color: rgb(232, 199, 13);
+   color: var(--icon-clr-hover);
+}
+
+.settings-btn {
+    position: absolute;
+    right: 13px;
+    color: var(--secondary-text-clr);
+    opacity: 0.4;
+    cursor: pointer;
+    user-select: none;
 }
 
 .student-avatar {
@@ -235,9 +252,9 @@ header {
     width: 50px;
     margin: 0.3em auto;
     padding: 0.6em;
-    color: #fff;
+    color: var(--text-clr);
     background-color: #0093E9;
-    background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
+    background-image: var(--points-box-clr);
     border-radius: 20%;
     user-select: none;
 }
@@ -248,7 +265,7 @@ footer {
     position: fixed;
     bottom: 0px;
     width: 100%;
-    background-image: linear-gradient(to bottom, #EFEFEF, #F7F7F7);
+    background-image: var(--footer-background-clr);
     padding: 0.7em 0 0.7em 0;
     -webkit-box-shadow: 0px -2px 6px -1px rgba(0,0,0,0.75);
     -moz-box-shadow: 0px -2px 6px -1px rgba(0,0,0,0.75);
@@ -263,7 +280,7 @@ footer {
 
 .tool-bar-btn {
     cursor: pointer;
-    color: var(--icon-color);
+    color: var(--icon-clr);
     background-color: transparent;
     font-size: 1.7rem;
     border: none;
@@ -293,6 +310,12 @@ footer {
     border: 2px solid #F7F7F7;
 }
 
+.tool-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 /* Class Monitors */
 
 .book-monitor-randomiser {
@@ -304,21 +327,15 @@ footer {
     width: 100%;
     max-width: 400px;
     height: 250px;
-    background-image: linear-gradient(to top, #9795f0 0%, #fbc8d4 100%);
+    background-image: var(--tool-background-clr);
     border-radius: 10px;
     padding: 1em;
-}
-
-.randomiser-top {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
 }
 
 .book-monitor-heading {
     text-transform: capitalize;
     font-size: 1.7rem;
-    color: #fff;
+    color: var(--secondary-text-clr);
 }
 
 .book-monitor-container {
@@ -331,7 +348,7 @@ footer {
 
 .book-monitor {
     font-size: 1.5rem;
-    color: #fff;
+    color: var(--secondary-text-clr);
     font-weight: 700;
     margin-bottom: 1em;
 }
@@ -347,7 +364,7 @@ footer {
     font-weight: 700;
     text-transform: capitalize;
     letter-spacing: 1px;
-    color: #181818;
+    color: var(--secondary-text-clr);
     border: 2px solid #EFEFEF;
     border-radius: 8px;
     box-shadow: 0 0 0 #fec1958c;
@@ -428,7 +445,7 @@ footer {
   
   .book-monitor-btn:hover {
     background: transparent;
-    color: #fff;
+    color: var(--icon-clr);
     box-shadow: 0 0 25px #fec1958c;
   }
   
@@ -507,16 +524,11 @@ footer {
     width: 100%;
     max-width: 300px;
     margin-left: auto;
-    background-color: #fff;
+    background-image: var(--tool-background-clr);
+    color: var(--secondary-text-clr);
     border: 2px solid black;
     border-radius: 10px;
     padding: 1em;
-}
-
-.timer-top {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
 }
 
 .countdown-input {
@@ -574,18 +586,13 @@ footer {
     height: 100%;
     min-height: 400px;
     background-color: #fff;
-    background-image: url(./images/yellow-circle.png);
-    background-repeat: no-repeat;
-    background-position: 50% -30%;
+    background-image: var(--tool-background-clr);
     border: 2px solid black;
     border-radius: 10px;
     padding: 1em;
 }
 
 .todo-list-top {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
     margin-bottom: 0.5em;
 }
 
@@ -674,6 +681,22 @@ footer {
 
 .delete-btn {
     color: crimson;
+}
+
+/* Add New Student */
+
+.add-student-form {
+    position: absolute;
+    top: -500%;
+    left: 50%;
+    transform: translate(-50%);
+    display: block;
+    width: 100%;
+    max-width: 400px;
+    height: 250px;
+    background-image: var(--tool-background-clr);
+    border-radius: 10px;
+    padding: 1em;
 }
 
 .display-none {

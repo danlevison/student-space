@@ -1,12 +1,13 @@
 // fetches weather data from openWeatherMapApi
-function fetchWeather() {
-    return fetch("https://api.openweathermap.org/data/2.5/weather?lat=51.595172&lon=-0.378002&appid=3c586f64c7ed29e2cb7d04b14b44d77a&units=metric")
-        .then(res => res.json())
+async function fetchWeather() {
+    const res = await fetch ("https://api.openweathermap.org/data/2.5/weather?lat=51.595172&lon=-0.378002&appid=3c586f64c7ed29e2cb7d04b14b44d77a&units=metric")
+    const weather = await res.json()
+    return weather
 }
 
 // renders the weather data on the page
-function renderWeather() {
-    fetchWeather().then(weather => {
+async function renderWeather() {
+        const weather = await fetchWeather()
         const location = weather.name
         const temperature = (weather.main.temp).toFixed(0)
         const description = weather.weather[0].description
@@ -20,7 +21,6 @@ function renderWeather() {
             `
 
         document.getElementById("weather-results").innerHTML = weatherHtml
-    })
 }
 
 export {fetchWeather, renderWeather}
