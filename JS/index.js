@@ -1,6 +1,6 @@
 import studentData from "../data.js"
 import { setGreetingHtml, displayDate, getBdayHtml } from "./displays.js"
-import { fetchWeather, renderWeather } from "./weather.js"
+import { fetchWeather } from "./weather.js"
 import { handleAvatarClick, handlePointsClick, removeStudent, getStudentHtml } from "./points.js"
 import { openRandomiser, closeRandomiser, getRandomStudent } from "./monitors.js"
 import { openTimer, closeTimer, timer } from "./timer.js"
@@ -9,7 +9,7 @@ import { openTodoBtn } from "./todo.js"
 window.onload = () => {
     setGreetingHtml()
     displayDate()
-    renderWeather()
+    fetchWeather()
     getBdayHtml()
     timer()
     render()

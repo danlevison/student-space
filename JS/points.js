@@ -78,34 +78,42 @@ function addStudent(e) {
 
 // Removes student from studentData //TODO: Consider splitting this function up into html creation and removeStudent
 function removeStudent(removeId) {
-    const targetStudentObj = studentDataFromLocalStorage.filter((student) => {
+    const targetStudentObj = studentDataFromLocalStorage.find((student) => {
         return student.uuid === removeId
-    })[0]
+    })
 
-   // Create the settings container
+   // Creates the settings container
    const settingsContainer = document.createElement("div")
-   settingsContainer.style.position = "fixed"
-   settingsContainer.style.top = "50%"
-   settingsContainer.style.left = "50%"
-   settingsContainer.style.transform = "translate(-50%, -50%)"
-   settingsContainer.style.backgroundColor = "#fff"
-   settingsContainer.style.border = "1px solid #000"
-   settingsContainer.style.padding = "10px"
- 
-   // Create the button inside the settings container
-   const removeStudentBtn = document.createElement("button");
+   settingsContainer.classList.add("settings-container")
+   
+   // Creates the remove student button inside the settings container
+   const removeStudentBtn = document.createElement("button")
+   removeStudentBtn.classList.add("removeStudentBtn")
    removeStudentBtn.innerText = `Remove ${targetStudentObj.name}`
 
-   removeStudentBtn.onclick = function() {
-        studentDataFromLocalStorage.pop() //TODO: Find a way to remove specific students from the studentData array!!
+    // Creates the button to close the settings container
+   const closeBtn = document.createElement("button")
+   closeBtn.classList.add("close-btn")
+   closeBtn.classList.add("close-settings-btn")
+   closeBtn.classList.add("material-symbols-outlined")
+   closeBtn.innerText = "close"
+
+   closeBtn.onclick = () => {
+        settingsContainer.classList.add("display-none")
+   }
+
+   removeStudentBtn.onclick = () => {
+        const index = studentDataFromLocalStorage.indexOf(targetStudentObj)
+        studentDataFromLocalStorage.splice(index, 1)
         localStorage.setItem("studentData", JSON.stringify(studentDataFromLocalStorage))
         settingsContainer.style.display = "none" // Hide the settings container after removing the student
 
         render()
    }
  
-   settingsContainer.appendChild(removeStudentBtn)
-   document.body.appendChild(settingsContainer)
+    settingsContainer.appendChild(removeStudentBtn)
+    settingsContainer.appendChild(closeBtn)
+    document.body.appendChild(settingsContainer)
 }
 
 // gets the points system html

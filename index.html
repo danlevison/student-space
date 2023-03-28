@@ -34,7 +34,7 @@
                         <a class="nav-link" href="index.html">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Class monitors</a>
+                        <a class="nav-link" href="#">School Lunches</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Seating plan</a>
@@ -64,16 +64,16 @@
         <div class="container">
             <div class="tool-bar">
                 <li>
-                    <button id="open-timer" class="material-symbols-outlined tool-bar-btn open-timer-btn">timer</button>
+                    <button id="open-timer" class="material-symbols-outlined tool-bar-btn">timer</button>
                 </li>
                 <li>
-                    <button id="open-randomiser-btn" class="material-symbols-outlined tool-bar-btn open-randomiser-btn">menu_book</button>
+                    <button id="open-randomiser-btn" class="material-symbols-outlined tool-bar-btn">menu_book</button>
                 </li>
                 <li>
-                    <button id="open-todo-btn" class="material-symbols-outlined tool-bar-btn open-todo-btn">checklist</button>
+                    <button id="open-todo-btn" class="material-symbols-outlined tool-bar-btn">checklist</button>
                 </li>
                 <li>
-                    <button id="add-student-btn" class="material-symbols-outlined tool-bar-btn add-student-btn">person_add</button>
+                    <button id="add-student-btn" class="material-symbols-outlined tool-bar-btn">person_add</button>
                 </li>
             </div>
 
@@ -131,7 +131,7 @@
                 <button class="book-monitor-reset-btn" id="book-monitor-reset-btn">Reset</button>
             </div>
 
-            <div id="todo-list" class="todo-list display-none">
+            <div id="todo-list" class="todo-list">
                 <div class="todo-list-top tool-top">
                     <h1 class="todo-list-heading">To do</h1>
                     <button id="close-todo-btn" class="material-symbols-outlined close-todo-btn close-btn">close</button>
@@ -150,16 +150,19 @@
                     <h1 class="add-student-form-heading">Add New Student</h1>
                     <button id="close-add-student-form-btn" class="material-symbols-outlined close-todo-btn close-btn">close</button>
                 </div>
-                <label for="name">Name:</label>
-                <input type="text" id="name" name="name" required>
-                <br>
-                <label for="dob">Date of Birth:</label>
-                <input type="date" id="dob" name="dob" required>
-                <br>
-                <label for="class-name">Class Name:</label>
-                <input type="text" id="class-name" name="class-name" required>
-                <br>
-                <button type="submit">Add Student</button>
+                <div class="add-student-info-container">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required>
+                    <br>
+                    <label for="dob">Date of Birth:</label>
+                    <input type="date" id="dob" name="dob" required>
+                    <br>
+                    <label for="class-name">Class Name:</label>
+                    <input type="text" id="class-name" name="class-name" required>
+                    <br>
+                    <button type="submit" class="add-student-btn">Add Student</button>
+                </div>
+               
               </form>
         </div>
     </footer>

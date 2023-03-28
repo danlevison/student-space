@@ -23,10 +23,14 @@ function setGreetingHtml() {
 
 function displayDate() {
     const currentDate = new Date()
-    const fullDate = new Intl.DateTimeFormat("en-us", {
-        dateStyle: "full"
-    })
-    document.getElementById("display-date").innerHTML = fullDate.format(currentDate)
+    const options = {
+        weekday: "long",
+        year: "numeric",
+        month: "long",
+        day: "numeric"
+    }
+    const fullDate = currentDate.toLocaleDateString("en-us", options)
+    document.getElementById("display-date").innerHTML = fullDate
 }
 
 function getBdayHtml() {

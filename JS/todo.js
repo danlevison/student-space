@@ -102,12 +102,12 @@ function createTodoElement(todo) {
 }
 
 function openTodoList() {
-  TodoListContainer.classList.remove("display-none")
+  TodoListContainer.classList.add("open")
   document.getElementById("points-grid").style.opacity = 0.6
 }
 
 function closeTodoList() {
-  TodoListContainer.classList.add("display-none")
+  TodoListContainer.classList.remove("open")
   document.getElementById("points-grid").style.opacity = 1
 }
 

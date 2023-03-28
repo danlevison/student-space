@@ -8,6 +8,7 @@
     --points-box-clr: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
     --footer-background-clr: linear-gradient(to bottom, #EFEFEF, #F7F7F7);
     --tool-background-clr: radial-gradient( circle 1224px at 10.6% 8.8%,  rgba(255,255,255,1) 0%, rgba(153,202,251,1) 100.2% );
+    --tool-border: 2px solid black;
 }
 
 *, *::before, *::after {
@@ -42,6 +43,11 @@ img {
     user-select: none;
 }
 
+button {
+    font-family: inherit;
+    cursor: pointer;
+}
+
 /* Typography */
 
 h1 {
@@ -67,7 +73,7 @@ header {
     -webkit-box-shadow: 0px 2px 5px -3px rgba(0,0,0,0.74);
     -moz-box-shadow: 0px 2px 5px -3px rgba(0,0,0,0.74);
     box-shadow: 0px 2px 5px -3px rgba(0,0,0,0.74);
-    margin-bottom: 1em;
+    margin-bottom: 2em;
 }
 
 /* Nav */
@@ -130,13 +136,14 @@ header {
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
+    margin-bottom: 1.5em;
 }
 
 .greeting-message {
     order: 1;
     color: var(--text-clr);
     text-transform: capitalize;
-    /* margin-right: 3.6em; */
+    /* margin-right: 2.6em; */
 }
 
 .display-date {
@@ -148,22 +155,28 @@ header {
 .weather-results {
     order: 2;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    justify-content: flex-end;
     align-items: center;
+    flex-wrap: wrap;
     color: var(--text-clr);
+    text-align: center;
 }
 
 .weather-location {
-    font-size: 1.2rem;
+    width: 100%;
+    text-align: right;
+    font-size: 1.3rem;
+    font-weight: 400;
+    margin-top: -20px;
+}
+
+.weather-icon {
+    width: 70px;
 }
 
 .temperature {
-    font-size: 1.2rem;
-}
-
-.weather-description {
-    text-transform: capitalize;
+    font-size: 1.7rem;
+    margin-left: -3px;
 }
 
 .bday-msg {
@@ -187,7 +200,7 @@ header {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 1em;
-    margin-bottom: 6em;
+    padding-bottom: 6em;
 }
 
 .student-div {
@@ -201,6 +214,7 @@ header {
     -moz-box-shadow: 0px 0px 7px 0px rgba(0,0,0,0.75);
     box-shadow: 0px 0px 7px 0px rgba(0,0,0,0.75);   
     border-radius: 0.25em;
+    letter-spacing: 0.5px;
 }
 
 .points-icon-btn {
@@ -208,7 +222,6 @@ header {
     position: absolute;
     top: 0.3em;
     right: 0;
-    font-family: inherit;
     font-size: 1.8rem;
     background-color: transparent;
     padding: 0 0.5em;
@@ -227,11 +240,46 @@ header {
 
 .settings-btn {
     position: absolute;
-    right: 13px;
+    right: 14px;
     color: var(--secondary-text-clr);
     opacity: 0.4;
     cursor: pointer;
     user-select: none;
+}
+
+.close-settings-btn {
+    position: absolute;
+    top: 6px;
+    right: 5px;
+}
+
+.settings-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translate(-50%, -50%);
+    background-image: var(--tool-background-clr);
+    border: var(--tool-border);
+    border-radius: 10px;
+    width: 200px;
+    height: 150px;
+}
+
+.removeStudentBtn {
+    font-size: 1rem;
+    color: var(--text-clr);
+    background-color: var(--icon-clr);
+    border: none;
+    border-radius: 10px;
+    padding: 1em;
+}
+
+.removeStudentBtn:hover,
+.removeStudentBtn:focus {
+    opacity: 0.8;
 }
 
 .student-avatar {
@@ -279,7 +327,6 @@ footer {
 }
 
 .tool-bar-btn {
-    cursor: pointer;
     color: var(--icon-clr);
     background-color: transparent;
     font-size: 1.7rem;
@@ -299,14 +346,13 @@ footer {
     border-radius: 50%;
     width: 30px;
     height: 30px;
-    cursor: pointer;
     user-select: none;
 }
 
 .close-btn:hover,
 .close-btn:focus {
     color: #EFEFEF;
-    background-color: transparent;
+    background-color: var(--icon-clr);
     border: 2px solid #F7F7F7;
 }
 
@@ -319,8 +365,8 @@ footer {
 /* Class Monitors */
 
 .book-monitor-randomiser {
-    position: absolute;
-    top: -500%;
+    position: fixed;
+    top: 20%;
     left: 50%;
     transform: translate(-50%);
     display: block;
@@ -328,6 +374,7 @@ footer {
     max-width: 400px;
     height: 250px;
     background-image: var(--tool-background-clr);
+    border: var(--tool-border);
     border-radius: 10px;
     padding: 1em;
 }
@@ -359,17 +406,16 @@ footer {
     position: relative;
     margin: 0 auto;
     padding: 12px 35px;
-    background-image: linear-gradient(to bottom, #EFEFEF, #F7F7F7);
+    background-color: var(--icon-clr);
     font-size: 1rem;
     font-weight: 700;
     text-transform: capitalize;
     letter-spacing: 1px;
-    color: var(--secondary-text-clr);
+    color: var(--text-clr);
     border: 2px solid #EFEFEF;
     border-radius: 8px;
     box-shadow: 0 0 0 #fec1958c;
     transition: all .3s ease-in-out;
-    cursor: pointer;
 }
 
 .book-monitor-reset-btn {
@@ -516,8 +562,8 @@ footer {
 /* Timer */
 
 .timer {
-    position: absolute;
-    top: -300%;
+    position: fixed;
+    top: 20%;
     left: 50%;
     transform: translate(-50%);
     display: block;
@@ -526,7 +572,7 @@ footer {
     margin-left: auto;
     background-image: var(--tool-background-clr);
     color: var(--secondary-text-clr);
-    border: 2px solid black;
+    border: var(--tool-border);
     border-radius: 10px;
     padding: 1em;
 }
@@ -561,7 +607,6 @@ footer {
     border-radius: 50%;
     color: #fff;
     background-color: #8208e6;
-    cursor: pointer;
 }
 
 .timer-btn-start {
@@ -576,20 +621,26 @@ footer {
 /* To do list */
 
 .todo-list {
-    position: absolute;
-    top: -90%;
-    right: 0;
-    transform: translateY(-90%);
-    display: block;
-    width: 100%;
-    max-width: 480px;
-    height: 100%;
-    min-height: 400px;
-    background-color: #fff;
+    position: fixed;
+    top: 0;
+    right: -150%;
+    bottom: 54px;
+    left: auto;
+    z-index: 100;
+    width: 25%;
+    min-width: 350px;
     background-image: var(--tool-background-clr);
-    border: 2px solid black;
+    border: var(--tool-border);
     border-radius: 10px;
     padding: 1em;
+    overflow: scroll;
+    overflow-x: hidden;
+    transition: transform 0.35s ease-in-out, right 0.35s ease-in-out;
+  }
+
+.todo-list.open {
+    transform: translateX(0%);
+    right: 0;
 }
 
 .todo-list-top {
@@ -610,6 +661,7 @@ footer {
 
 .todo-list-input{
     flex: 1 1 0%;
+    width: 100%;
     color: #EFEFEF;
     background-color: rgb(67, 67, 97);
     padding: 1em;
@@ -623,7 +675,6 @@ footer {
 
 .submit-todo {
     color: #80D0C7;
-    font-family: inherit;
     font-weight: 700;
     background-color: rgb(67, 67, 97);
     border-radius: 1em;
@@ -669,10 +720,8 @@ footer {
     border: none;
     background-color: transparent;
     font-weight: 700;
-    font-family: inherit;
     text-transform: uppercase;
     padding: 0.5em;
-    cursor: pointer;
 }
 
 .edit-btn {
@@ -686,15 +735,43 @@ footer {
 /* Add New Student */
 
 .add-student-form {
-    position: absolute;
-    top: -500%;
+    position: fixed;
+    top: 15%;
     left: 50%;
     transform: translate(-50%);
     display: block;
     width: 100%;
     max-width: 400px;
-    height: 250px;
+    height: 400px;
     background-image: var(--tool-background-clr);
+    border: var(--tool-border);
+    border-radius: 10px;
+    padding: 1em;
+}
+
+.add-student-form-heading {
+    font-size: 2rem;
+}
+
+.add-student-info-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 1em;
+}
+
+.add-student-info-container > input {
+    width: 85%;
+    border-radius: 10px;
+    padding: 0.5em;
+}
+
+.add-student-btn {
+    font-size: 1rem;
+    font-weight: 700;
+    background-color: var(--icon-clr);
+    color: var(--text-clr);
+    border: none;
     border-radius: 10px;
     padding: 1em;
 }
@@ -705,7 +782,11 @@ footer {
 
 /* Media Queries */
 
-@media (max-width: 980px) {
+@media (max-width: 900px) {
+    body {
+        text-align: center;
+    }
+
     h1 {
         font-size: 1.9rem;
     }
@@ -716,17 +797,20 @@ footer {
 
     .hamburger-btn {
         display: flex;
+        margin-top: 0.5em;
     }
 
     .navbar {
         flex-direction: column;
         align-items: flex-start;
+        margin-top: 0.5em;
+        padding-bottom: 0;
     }
 
     .nav-list {
         flex-direction: column;
         text-align: center;
-        gap: 0.5em;
+        gap: 2em;
         display: none;
         font-size: 0.8rem;
         margin-bottom: 1em;
@@ -736,17 +820,48 @@ footer {
         display: flex;
     }
 
+    .logo-container {
+        margin-bottom: 1em;
+    }
+
     .hero-section {
         flex-direction: column;
+        margin-bottom: 0.5em;
     }
 
     .greeting-message {
-        margin-bottom: 0.4em;
+        margin-bottom: 0.2em;
     }
 
     .display-date {
         font-size: 1.125rem;
-        margin-bottom: 0.4em;
+    }
+
+    .weather-results {
+        justify-content: center;
+    }
+
+    .weather-location {
+        text-align: center;
+        font-size: 1.2rem;
+        margin-bottom: 0.5em;
+    }
+
+    .weather-icon {
+        width: 60px;
+    }
+
+    .temperature {
+        font-size: 1.4rem;
+    }
+
+    .todo-list {
+        width: 50%;
+        min-width: 200px;
+    }
+
+    .add-student-form {
+        text-align: left;
     }
 }
 
