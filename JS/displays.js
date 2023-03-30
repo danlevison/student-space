@@ -1,9 +1,11 @@
 import studentData from "../data.js"
 
 const toggleHamburger = document.getElementById("hamburger-btn")
+
 toggleHamburger.addEventListener("click", () => {
     const navList = document.getElementById("nav-list")
     navList.classList.toggle("active")
+    toggleHamburger.classList.toggle("active")
 })
 
 // sets greeting message depending on hour of day

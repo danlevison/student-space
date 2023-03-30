@@ -111,23 +111,37 @@ header {
     text-decoration: underline;
 }
 
+/* Hamburger menu */
+
 .hamburger-btn {
     position: absolute;
+    top: 1.35rem;
+    right: 1.5rem;
     display: none;
-    top: 1.5rem;
-    right: 1rem;
     flex-direction: column;
-    justify-content: space-between;
+    cursor: pointer;
+  }
+  
+  .line {
     width: 30px;
-    height: 21px;
-}
-
-.hamburger-btn .bar {
     height: 3px;
-    width: 100%;
     background-color: var(--text-clr);
-    border-radius: 10px;
-}
+    margin: 2.5px 0;
+    transition: transform 0.3s;
+  }
+  
+  /* Change the hamburger menu to an "X" */
+  .hamburger-btn.active .line:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+  
+  .hamburger-btn.active .line:nth-child(2) {
+    opacity: 0;
+  }
+  
+  .hamburger-btn.active .line:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+  }
 
 /* Hero Section */
 
@@ -373,7 +387,7 @@ footer {
     width: 100%;
     max-width: 400px;
     height: 250px;
-    background-image: var(--tool-background-clr);
+    background: linear-gradient(0deg, rgb(250, 231, 59) 32%, rgb(251, 251, 251) 32%, rgb(255, 255, 255) 100%);
     border: var(--tool-border);
     border-radius: 10px;
     padding: 1em;
