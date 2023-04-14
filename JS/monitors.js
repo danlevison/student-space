@@ -3,6 +3,8 @@ import studentData from "../data.js"
 let selectedStudents = []
 const bookMonitorBtn = document.getElementById("book-monitor-btn")
 const bookMonitorResetBtn = document.getElementById("book-monitor-reset-btn")
+const studentDataFromLocalStorage = JSON.parse(localStorage.getItem("studentData")) || studentData;
+console.log(studentDataFromLocalStorage)
 
 // Event listeners
 document.getElementById("open-randomiser-btn").addEventListener("click", openRandomiser)
@@ -10,10 +12,18 @@ document.getElementById("close-randomiser-btn").addEventListener("click", closeR
 bookMonitorBtn.addEventListener("click", getBookMonitorHtml)
 bookMonitorResetBtn.addEventListener("click", reset)
 
+
+window.addEventListener("load", displayRandomStudents)
+
 // Functions
 function openRandomiser() {
     document.getElementById("book-monitor-randomiser").classList.remove("display-none")
-    document.getElementById("points-grid").style.opacity = 0.6
+    document.getElementById("points-grid").style.opacity = 0.4
+
+    // Close other tools
+    document.getElementById("timer").classList.add("display-none")
+    document.getElementById("todo-list").classList.remove("open")
+    document.getElementById("add-student-form").classList.add("display-none")
 }
 
 function closeRandomiser() {
@@ -23,7 +33,7 @@ function closeRandomiser() {
 
 function getRandomStudent() {
     const studentNameArr = []
-    studentData.map((student) => {
+    studentDataFromLocalStorage.map((student) => {
         if (!selectedStudents.includes(student.name)) {
             studentNameArr.push(student.name)
         }
@@ -33,7 +43,7 @@ function getRandomStudent() {
     const randomStudent = studentNameArr[randomIndex]
     
     selectedStudents.push(randomStudent)
-    if(selectedStudents.length === 30) {
+    if(selectedStudents.length === studentDataFromLocalStorage.length) {
         bookMonitorBtn.style.display = "none"
         bookMonitorResetBtn.style.display = "block"
     }
@@ -42,8 +52,25 @@ function getRandomStudent() {
 }
 
 function getBookMonitorHtml() {
-    document.getElementById("book-monitor-1").innerHTML = getRandomStudent() + " 📚"
-    document.getElementById("book-monitor-2").innerHTML = getRandomStudent() + " 📚"
+    const randomStudent1 = getRandomStudent()
+    const randomStudent2 = getRandomStudent()
+
+    // Save to local storage
+    localStorage.setItem("randomStudent1", randomStudent1)
+    localStorage.setItem("randomStudent2", randomStudent2)
+
+    document.getElementById("book-monitor-1").innerHTML = randomStudent1 + " 📚"
+    document.getElementById("book-monitor-2").innerHTML = randomStudent2 + " 📚"
+}
+
+function displayRandomStudents() {
+    const randomStudent1 = localStorage.getItem("randomStudent1")
+    const randomStudent2 = localStorage.getItem("randomStudent2")
+
+    if (randomStudent1 && randomStudent2) {
+        document.getElementById("book-monitor-1").innerHTML = randomStudent1 + " 📚"
+        document.getElementById("book-monitor-2").innerHTML = randomStudent2 + " 📚"
+    }
 }
 
 function reset () {
@@ -53,6 +80,7 @@ function reset () {
     document.getElementById("book-monitor-1").innerHTML = "📔"
     document.getElementById("book-monitor-2").innerHTML = "📔"
 }
+
 
 export { openRandomiser, closeRandomiser, getRandomStudent }
 

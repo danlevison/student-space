@@ -14,9 +14,9 @@ function setGreetingHtml() {
     const currentTime = new Date().getHours()
     studentData.forEach((student) => {
         if(currentTime < 12) {
-            greeting = `Good morning ${student.className}!`
+            greeting = `Good morning, ${student.className}!`
         } else {
-            greeting = `Good afternoon ${student.className}!`
+            greeting = `Good afternoon, ${student.className}!`
         }
     })
     document.getElementById("greeting-message").innerHTML = greeting

@@ -9,12 +9,21 @@ document.getElementById("add-student-btn").addEventListener("click", openAddStud
 document.getElementById("close-add-student-form-btn").addEventListener("click", closeAddStudentForm)
 addStudentForm.addEventListener("submit", addStudent)
 
+// Functions
 function openAddStudentForm() {
     document.getElementById("add-student-form").classList.remove("display-none")
+    document.getElementById("points-grid").style.opacity = 0.4
+
+    // Close other tools
+    document.getElementById("timer").classList.add("display-none")
+    document.getElementById("book-monitor-randomiser").classList.add("display-none")
+    document.getElementById("todo-list").classList.remove("open")
+    
 }
 
 function closeAddStudentForm() {
     document.getElementById("add-student-form").classList.add("display-none")
+    document.getElementById("points-grid").style.opacity = 1
 }
 
 // Allows user to click avatar to change it.
@@ -45,7 +54,7 @@ function handlePointsClick(pointsId) {
     const pointsAudio = new Audio("./audio/points.mp3")
     pointsAudio.play() 
 
-    if (targetStudentObj.points === 11) {
+    if (targetStudentObj.points === 51) {
         targetStudentObj.points = 0
     }
     
@@ -55,8 +64,7 @@ function handlePointsClick(pointsId) {
 }
 
 // Adds a new student through a form submit
-function addStudent(e) {
-    e.preventDefault()
+function addStudent() {
     const name = document.getElementById("name")
     const dob = document.getElementById("dob")
     const className = document.getElementById("class-name")
@@ -107,7 +115,7 @@ function removeStudent(removeId) {
         studentDataFromLocalStorage.splice(index, 1)
         localStorage.setItem("studentData", JSON.stringify(studentDataFromLocalStorage))
         settingsContainer.style.display = "none" // Hide the settings container after removing the student
-
+        location.reload() // Reloads the page after student is removed to update studentData
         render()
    }
  
@@ -116,7 +124,7 @@ function removeStudent(removeId) {
     document.body.appendChild(settingsContainer)
 }
 
-// gets the points system html
+// Gets the points system html
 function getStudentHtml() {
     let pointsGridHtml = "" 
     const updatedStudentData = studentDataFromLocalStorage

@@ -6,3 +6,4 @@
 9. Find a way to center display message with points grid.
 10. Remove HTML classes (timer-top, randomiser-top, todolist-top, add-student-form-top if not needed).
  - Add a .catch block in weather.js
+ - fixed undefined when odd number of students in monitors array.

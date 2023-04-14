@@ -7,7 +7,12 @@ document.getElementById("close-timer-btn").addEventListener("click", closeTimer)
 
 function openTimer() {
     document.getElementById("timer").classList.remove("display-none")
-    document.getElementById("points-grid").style.opacity = 0.6
+    document.getElementById("points-grid").style.opacity = 0.4
+
+    // Close other tools
+    document.getElementById("todo-list").classList.remove("open")
+    document.getElementById("book-monitor-randomiser").classList.add("display-none")
+    document.getElementById("add-student-form").classList.add("display-none")
 }
 
 function closeTimer() {

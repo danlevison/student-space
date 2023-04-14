@@ -21,6 +21,22 @@ closeTodoBtn.addEventListener("click", closeTodoList)
 form.addEventListener("submit", addTodo)
 
 // Functions
+
+function openTodoList() {
+  TodoListContainer.classList.add("open")
+  document.getElementById("points-grid").style.opacity = 0.4
+
+  // Close other tools
+  document.getElementById("timer").classList.add("display-none")
+  document.getElementById("book-monitor-randomiser").classList.add("display-none")
+  document.getElementById("add-student-form").classList.add("display-none")
+}
+
+function closeTodoList() {
+  TodoListContainer.classList.remove("open")
+  document.getElementById("points-grid").style.opacity = 1
+}
+
 function addTodo (e) {
   e.preventDefault()
 
@@ -99,16 +115,6 @@ function createTodoElement(todo) {
   })
 
   return todoEl
-}
-
-function openTodoList() {
-  TodoListContainer.classList.add("open")
-  document.getElementById("points-grid").style.opacity = 0.6
-}
-
-function closeTodoList() {
-  TodoListContainer.classList.remove("open")
-  document.getElementById("points-grid").style.opacity = 1
 }
 
 export { openTodoBtn }
