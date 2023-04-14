@@ -21,7 +21,10 @@ function fetchWeather() {
                    `
                 document.getElementById("weather-results").innerHTML = weatherHtml
             })
-            .catch(err => console.error(err))  
+            .catch(err => {
+                console.error(err) 
+            }) 
+                
     })
 }
 

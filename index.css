@@ -188,6 +188,10 @@ header {
     width: 70px;
 }
 
+.weather-placeholder-icon {
+    width: 65px;
+}
+
 .temperature {
     font-size: 1.7rem;
     margin-left: -3px;
