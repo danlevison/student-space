@@ -1,9 +1,9 @@
 :root {
-    --text-clr: #FAF9F6;
-    --secondary-text-clr: #00000;
+    --text-clr: #fff;
+    --secondary-text-clr: #333;
     --icon-clr: #5065A8;
     --icon-clr-hover: rgb(232, 199, 13);
-    --background-clr: linear-gradient( 109.6deg,  rgba(253,199,141,1) 11.3%, rgba(249,143,253,1) 100.2% );
+    --background-clr: rgba(253,199,141,1);
     --grid-box-clr: radial-gradient( circle 1224px at 10.6% 8.8%,  rgba(255,255,255,1) 0%, rgba(153,202,251,1) 100.2% );
     --points-box-clr: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
     --footer-background-clr: linear-gradient(to bottom, #EFEFEF, #F7F7F7);
@@ -20,10 +20,7 @@
 body {
     font-family: 'Roboto', sans-serif;
     font-size: 16px;
-    background-color: rgba(253,199,141,1);
-    /* background-image: var(--background-clr);
-    background-size: cover;
-    background-repeat: no-repeat; */
+    background-color: var(--background-clr);
 }
 
 .container {
@@ -219,6 +216,7 @@ header {
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 1em;
     padding-bottom: 6em;
+    user-select: none;
 }
 
 .student-div {
@@ -282,6 +280,7 @@ header {
     background-image: var(--tool-background-clr);
     border: var(--tool-border);
     border-radius: 10px;
+    padding: 1em;
     width: 200px;
     height: 150px;
 }
@@ -528,6 +527,10 @@ footer {
     margin-bottom: 0.5em;
 }
 
+.todo-list-heading {
+    color: var(--secondary-text-clr);
+}
+
 .todo-list-form {
     display: flex;
     margin-top: 1.5em;
@@ -632,6 +635,7 @@ footer {
 }
 
 .add-student-form-heading {
+    color: var(--secondary-text-clr);
     font-size: 2rem;
     margin: 0 auto;
 }
@@ -644,7 +648,7 @@ footer {
 }
 
 .add-student-info-container > input {
-    width: 85%;
+    width: 100%;
     border-radius: 10px;
     padding: 0.5em;
 }
@@ -733,6 +737,11 @@ footer {
 
     .weather-icon {
         width: 60px;
+    }
+
+    .weather-placeholder-icon {
+        width: 60px;
+        margin-bottom: 0.5em;
     }
 
     .temperature {

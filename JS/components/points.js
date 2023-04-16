@@ -1,5 +1,5 @@
 import studentData from "../data.js"
-import { render } from "./index.js"
+import { render } from "../index.js"
 
 const addStudentForm = document.getElementById("add-student-form")
 const studentDataFromLocalStorage = JSON.parse(localStorage.getItem("studentData")) || studentData;

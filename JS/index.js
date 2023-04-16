@@ -1,10 +1,10 @@
-import studentData from "../data.js"
-import { setGreetingHtml, displayDate, getBdayHtml } from "./displays.js"
-import { fetchWeather } from "./weather.js"
-import { handleAvatarClick, handlePointsClick, removeStudent, getStudentHtml } from "./points.js"
-import { openRandomiser, closeRandomiser, getRandomStudent } from "./monitors.js"
-import { openTimer, closeTimer, timer } from "./timer.js"
-import { openTodoBtn } from "./todo.js"
+import studentData from "./data.js"
+import { setGreetingHtml, displayDate, getBdayHtml } from "./components/displays.js"
+import { fetchWeather } from "./components/weather.js"
+import { handleAvatarClick, handlePointsClick, removeStudent, getStudentHtml } from "./components/points.js"
+import { openRandomiser, closeRandomiser, getRandomStudent } from "./components/monitors.js"
+import { openTimer, closeTimer, timer } from "./components/timer.js"
+import { openTodoBtn } from "./components/todo.js"
 
 window.onload = () => {
     setGreetingHtml()

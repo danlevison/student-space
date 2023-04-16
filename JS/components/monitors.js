@@ -4,7 +4,6 @@ let selectedStudents = []
 const bookMonitorBtn = document.getElementById("book-monitor-btn")
 const bookMonitorResetBtn = document.getElementById("book-monitor-reset-btn")
 const studentDataFromLocalStorage = JSON.parse(localStorage.getItem("studentData")) || studentData;
-console.log(studentDataFromLocalStorage)
 
 // Event listeners
 document.getElementById("open-randomiser-btn").addEventListener("click", openRandomiser)

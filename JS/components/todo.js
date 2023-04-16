@@ -21,7 +21,6 @@ closeTodoBtn.addEventListener("click", closeTodoList)
 form.addEventListener("submit", addTodo)
 
 // Functions
-
 function openTodoList() {
   TodoListContainer.classList.add("open")
   document.getElementById("points-grid").style.opacity = 0.4
