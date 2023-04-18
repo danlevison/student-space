@@ -15,7 +15,6 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    touch-action: manipulation;
 }
 
 body {
@@ -44,6 +43,7 @@ img {
 button {
     font-family: inherit;
     cursor: pointer;
+    touch-action: manipulation;
 }
 
 /* Typography */
