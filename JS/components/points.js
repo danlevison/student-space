@@ -138,7 +138,7 @@ function getStudentHtml() {
             </div>
             <i class="fa-solid fa-award points-icon-btn" data-point="${student.uuid}"></i>
             <p id="student-points" class="student-points">${student.points}</p>
-            <span class="settings-btn material-symbols-outlined" data-remove="${student.uuid}">settings</span>
+            <button class="settings-btn material-symbols-outlined" data-remove="${student.uuid}">settings</button>
         </div>`  
     })
     return pointsGridHtml

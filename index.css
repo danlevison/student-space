@@ -259,6 +259,7 @@ header {
     position: absolute;
     right: 14px;
     color: var(--secondary-text-clr);
+    border: none;
     opacity: 0.4;
     cursor: pointer;
     user-select: none;
