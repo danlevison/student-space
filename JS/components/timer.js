@@ -1,3 +1,4 @@
+const countdown = document.getElementById("countdown")
 let countdownInput = document.getElementById("countdown-input")
 let time = countdownInput.value * 60 // set countdown time
 let countdownInterval = ""
@@ -47,6 +48,10 @@ function timer() {
     })
 
     resetBtn.addEventListener("click", () => {
+      countdown.innerHTML = `${countdownInput.value}:00`
+      if(countdownInput.value == 0) {
+        countdown.innerHTML = "00:00"
+      }
       time =  countdownInput.value * 60
     })
 }
@@ -57,11 +62,11 @@ function updateCountdown() {
     
     if(time === 0) {
       clearInterval(countdownInterval)
-      document.getElementById("countdown").innerHTML = `00:00`
+      countdown.innerHTML = `00:00`
     } else {
       time--
       seconds = seconds < 10 ? "0" + seconds : seconds
-      document.getElementById("countdown").innerHTML = `${minutes}:${seconds}`
+      countdown.innerHTML = `${minutes}:${seconds}`
     }
   }
 

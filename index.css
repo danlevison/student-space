@@ -143,7 +143,7 @@ header {
 
 /* Hero Section */
 
-.hero-section {
+.hero-info {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
@@ -197,6 +197,9 @@ header {
 
 .bday-msg {
     display: none;
+    width: 100%;
+    max-width: 550px;
+    font-size: 2rem;
     color: #fff;
     text-shadow: 1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000;
     text-align: center;
@@ -204,8 +207,8 @@ header {
     background: -webkit-linear-gradient(to right, #4BC0C8, #C779D0, #FEAC5E); 
     background: linear-gradient(to right, #4BC0C8, #C779D0, #FEAC5E);
     border-radius: 15px;
-    padding: 0.3em;
-    margin-bottom: 0.5em;
+    padding: 0.05em;
+    margin: 0 auto;
 
 }
 
@@ -372,7 +375,6 @@ footer {
 .close-btn:focus {
     color: #EFEFEF;
     background-color: var(--icon-clr);
-    border: 2px solid #F7F7F7;
 }
 
 .tool-top {
@@ -436,9 +438,19 @@ footer {
     border-radius: 8px;
 }
 
+.book-monitor-btn:hover,
+.book-monitor-btn:focus {
+    opacity: 0.7;
+}
+
 .book-monitor-reset-btn {
     display: none;
     background-color: #C779D0;
+}
+
+.book-monitor-reset-btn:hover,
+.book-monitor-reset-btn:focus {
+    opacity: 0.7;
 }
 
 /* Timer */
@@ -665,6 +677,11 @@ footer {
     padding: 1em;
 }
 
+.add-student-btn:hover,
+.add-student-btn:focus {
+    opacity: 0.7;
+}
+
 .display-none {
     display: none;
 }
@@ -713,8 +730,15 @@ footer {
         margin-bottom: 1em;
     }
 
-    .hero-section {
+    .hero-info {
         flex-direction: column;
+        margin-bottom: 0.5em;
+    }
+
+    .bday-msg {
+        width: 70%;
+        padding: 0.2em;
+        font-size: 1.5rem;
         margin-bottom: 0.5em;
     }
 
@@ -766,6 +790,26 @@ footer {
 
     .add-student-form {
         text-align: left;
+    }
+}
+
+@media (max-height: 680px) {
+    .add-student-form {
+        top: 20%;
+    }
+
+    .book-monitor-randomiser {
+        top: 25%;
+    }
+}
+
+@media (max-height: 560px) {
+    .add-student-form {
+        top: 3%;
+    }
+
+    .book-monitor-randomiser {
+        top: 15%;
     }
 }
 

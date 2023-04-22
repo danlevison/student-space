@@ -1,6 +1,7 @@
 import studentData from "../data.js"
 
 const toggleHamburger = document.getElementById("hamburger-btn")
+const studentDataFromLocalStorage = JSON.parse(localStorage.getItem("studentData")) || studentData;
 
 toggleHamburger.addEventListener("click", () => {
     const navList = document.getElementById("nav-list")
@@ -41,15 +42,15 @@ function getBdayHtml() {
     const currentMonth = todayDate.getMonth() + 1 // months are 0 based e.g Jan = 0 so have to + 1
     const date = todayDate.getDate()
 
-    studentData.forEach(function(student) {
+    studentDataFromLocalStorage.forEach(function(student) {
+        console.log(student)
         const birthday = new Date(student.dob.split(".").reverse())
         const birthMonth = birthday.getMonth() + 1 
         const birthDate = birthday.getDate()
         
         if(currentMonth === birthMonth && date === birthDate) { 
-            bdayMsg.innerHTML += `Happy Birthday ${student.name}! `
+            bdayMsg.innerHTML += `Happy Birthday, ${student.name}! 🎂 `
             bdayMsg.style.display = "block"
-            student.avatar = "../images/bdayAvatar.png" //TODO: fix avatar not showing + update to better bday avatar
         }
     })
 }

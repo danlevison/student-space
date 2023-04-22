@@ -3,6 +3,7 @@ import { render } from "../index.js"
 
 const addStudentForm = document.getElementById("add-student-form")
 const studentDataFromLocalStorage = JSON.parse(localStorage.getItem("studentData")) || studentData;
+let openenedSettings = null
 
 //Event Listeners 
 document.getElementById("add-student-btn").addEventListener("click", openAddStudentForm)
@@ -90,6 +91,11 @@ function removeStudent(removeId) {
         return student.uuid === removeId
     })
 
+    // If a settings container is already open, close it before opening a new one
+    if(openenedSettings !==null) {
+        openenedSettings.classList.add("display-none")
+    }
+
    // Creates the settings container
    const settingsContainer = document.createElement("div")
    settingsContainer.classList.add("settings-container")
@@ -121,6 +127,10 @@ function removeStudent(removeId) {
  
     settingsContainer.appendChild(removeStudentBtn)
     settingsContainer.appendChild(closeBtn)
+
+    // Set the currently open settings container to the new one
+    openenedSettings = settingsContainer
+    
     document.body.appendChild(settingsContainer)
 }
 
