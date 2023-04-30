@@ -11,9 +11,9 @@ toggleHamburger.addEventListener("click", () => {
 
 // sets greeting message depending on hour of day
 function setGreetingHtml() {
-    let greeting = ""
+    let greeting = "Welcome"
     const currentTime = new Date().getHours()
-    studentData.forEach((student) => {
+    studentDataFromLocalStorage.forEach((student) => {
         if(currentTime < 12) {
             greeting = `Good morning, ${student.className}!`
         } else {
@@ -21,7 +21,6 @@ function setGreetingHtml() {
         }
     })
     document.getElementById("greeting-message").innerHTML = greeting
-
 }
 
 function displayDate() {
@@ -43,7 +42,6 @@ function getBdayHtml() {
     const date = todayDate.getDate()
 
     studentDataFromLocalStorage.forEach(function(student) {
-        console.log(student)
         const birthday = new Date(student.dob.split(".").reverse())
         const birthMonth = birthday.getMonth() + 1 
         const birthDate = birthday.getDate()

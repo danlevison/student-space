@@ -3,6 +3,7 @@ import studentData from "../data.js"
 let selectedStudents = []
 const bookMonitorBtn = document.getElementById("book-monitor-btn")
 const bookMonitorResetBtn = document.getElementById("book-monitor-reset-btn")
+const bookMonitorContainer = document.getElementById("book-monitor-container")
 const studentDataFromLocalStorage = JSON.parse(localStorage.getItem("studentData")) || studentData;
 
 // Event listeners
@@ -38,6 +39,10 @@ function getRandomStudent() {
         }
     })
 
+    if (studentNameArr.length === 0) {
+        return ""
+    }
+
     const randomIndex = Math.floor(Math.random() * studentNameArr.length)
     const randomStudent = studentNameArr[randomIndex]
     
@@ -58,8 +63,11 @@ function getBookMonitorHtml() {
     localStorage.setItem("randomStudent1", randomStudent1)
     localStorage.setItem("randomStudent2", randomStudent2)
 
-    document.getElementById("book-monitor-1").innerHTML = randomStudent1 + " 📚"
-    document.getElementById("book-monitor-2").innerHTML = randomStudent2 + " 📚"
+    document.getElementById("book-monitor-1").innerHTML = randomStudent1
+    document.getElementById("book-monitor-2").innerHTML = randomStudent2
+
+    // console.log(randomStudent1)
+    // console.log(randomStudent2)
 }
 
 function displayRandomStudents() {
@@ -67,8 +75,8 @@ function displayRandomStudents() {
     const randomStudent2 = localStorage.getItem("randomStudent2")
 
     if (randomStudent1 && randomStudent2) {
-        document.getElementById("book-monitor-1").innerHTML = randomStudent1 + " 📚"
-        document.getElementById("book-monitor-2").innerHTML = randomStudent2 + " 📚"
+        document.getElementById("book-monitor-1").innerHTML = randomStudent1
+        document.getElementById("book-monitor-2").innerHTML = randomStudent2
     }
 }
 

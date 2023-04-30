@@ -113,6 +113,8 @@ header {
 
 .hamburger-btn {
     position: absolute;
+    border: none;
+    background-color: transparent;
     top: 1.35rem;
     right: 1.5rem;
     display: none;
@@ -237,6 +239,10 @@ header {
     letter-spacing: 0.5px;
 }
 
+.student-name {
+    font-size: 1em;
+}
+
 .points-icon-btn {
     color: var(--icon-clr);
     position: absolute;
@@ -263,6 +269,7 @@ header {
     right: 14px;
     color: var(--secondary-text-clr);
     border: none;
+    background-color: transparent;
     opacity: 0.4;
     cursor: pointer;
     user-select: none;

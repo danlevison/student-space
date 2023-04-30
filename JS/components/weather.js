@@ -11,11 +11,10 @@ function fetchWeather() {
             .then(weather => {
                 const location = weather.name
                 const temperature = (weather.main.temp).toFixed(0)
-                const description = weather.weather[0].description
                 const weatherIcon = weather.weather[0].icon
     
                 const weatherHtml = `
-                    <img class="weather-icon" src="http://openweathermap.org/img/w/${weatherIcon}.png" alt="Weather Icon">
+                    <img class="weather-icon" src="https://openweathermap.org/img/wn/${weatherIcon}@2x.png" alt="Weather Icon" />
                     <p class="temperature">${temperature}°</p>
                     <h2 class="weather-location">${location}</h2>
                    `

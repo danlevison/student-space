@@ -142,13 +142,13 @@ function getStudentHtml() {
     updatedStudentData.forEach((student) => {
         pointsGridHtml += `
         <div data-student="${student.uuid}" class="student-div">
-            ${student.name} 
+            <h2 class="student-name">${student.name}</h2> 
             <div class="student-avatar">
-                <img src="${student.avatar}" class="student-avatar-img" data-avatar="${student.uuid}">
+                <img src="${student.avatar}" class="student-avatar-img" data-avatar="${student.uuid}" alt="Student avatar" aria-label="Student avatar">
             </div>
-            <i class="fa-solid fa-award points-icon-btn" data-point="${student.uuid}"></i>
+            <button class="fa-solid fa-award points-icon-btn" data-point="${student.uuid}" aria-label="Award points"></button>
             <p id="student-points" class="student-points">${student.points}</p>
-            <button class="settings-btn material-symbols-outlined" data-remove="${student.uuid}">settings</button>
+            <button class="settings-btn material-symbols-outlined" data-remove="${student.uuid}" aria-label="Settings">settings</button>
         </div>`  
     })
     return pointsGridHtml

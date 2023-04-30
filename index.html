@@ -18,16 +18,16 @@
 <body>
     <header>
         <div class="container">
-            <nav class="navbar">
+            <nav class="navbar" aria-label="Site Menu">
                 <div class="logo-container">
-                    <a href="index.html"><img class="logo" src="/images/student space logo.png"></a>
+                    <a href="index.html" aria-label="Student Space home page"><img class="logo" src="/images/student space logo.png" alt="Student Space logo"></a>
                 </div>
 
-                <div class="hamburger-btn" id="hamburger-btn">
+                <button class="hamburger-btn" id="hamburger-btn" aria-label="Menu">
                     <div class="line"></div>
                     <div class="line"></div>
                     <div class="line"></div>
-                </div>
+                </button>
 
                 <ul class="nav-list" id="nav-list">
                     <li class="nav-item">
@@ -55,7 +55,7 @@
                     <h1 class="greeting-message" id="greeting-message"></h1>
                     <p class="display-date" id="display-date"></p>
                     <div class="weather-results" id="weather-results">
-                        <img class="weather-placeholder-icon" src="./images/weather-placeholder.png"/>
+                        <img class="weather-placeholder-icon" src="./images/weather-placeholder.png" alt="Weather icon placeholder" />
                     </div>
                 </div>
                 
@@ -67,25 +67,26 @@
 
     <footer>
         <div class="container">
-            <div class="tool-bar">
+            <nav class="tool-bar" aria-label="Toolbar">
                 <li>
-                    <button id="open-timer" class="material-symbols-outlined tool-bar-btn">timer</button>
+                    <button id="open-timer" class="material-symbols-outlined tool-bar-btn" aria-label="Open timer">timer</button>
                 </li>
                 <li>
-                    <button id="open-randomiser-btn" class="material-symbols-outlined tool-bar-btn">menu_book</button>
+                    <button id="open-randomiser-btn" class="material-symbols-outlined tool-bar-btn" aria-label="Open randomiser">menu_book</button>
                 </li>
                 <li>
-                    <button id="open-todo-btn" class="material-symbols-outlined tool-bar-btn">checklist</button>
+                    <button id="open-todo-btn" class="material-symbols-outlined tool-bar-btn" aria-label="Open to-do list">checklist</button>
                 </li>
                 <li>
-                    <button id="add-student-btn" class="material-symbols-outlined tool-bar-btn">person_add</button>
+                    <button id="add-student-btn" class="material-symbols-outlined tool-bar-btn" aria-label="Add student">person_add</button>
                 </li>
-            </div>
+            </nav>
 
             <div id="timer" class="timer display-none">
                 <div class="timer-top tool-top">
-                    <input id="countdown-input" class="countdown-input" placeholder="0" type="number" min="1"></input>
-                    <button id="close-timer-btn" class="material-symbols-outlined close-timer-btn close-btn">close</button>
+                    <label for="countdown-input" class="display-none">Enter countdown time in minutes</label>
+                    <input id="countdown-input" class="countdown-input" placeholder="0" type="number" min="1">
+                    <button id="close-timer-btn" class="material-symbols-outlined close-timer-btn close-btn" aria-label="Close timer">close</button>
                 </div>
                 
                 <p id="countdown" class="countdown">00:00</p>
@@ -106,7 +107,7 @@
             <div id="book-monitor-randomiser" class="book-monitor-randomiser display-none">
                 <div class="randomiser-top tool-top">
                     <h1 class="book-monitor-heading">Book monitors</h1>
-                    <button id="close-randomiser-btn" class="material-symbols-outlined close-randomiser-btn close-btn">close</button>
+                    <button id="close-randomiser-btn" class="material-symbols-outlined close-randomiser-btn close-btn" aria-label="Close randomiser">close</button>
                 </div>
                 
                 <div class="book-monitor-container" id="book-monitor-container">
@@ -117,24 +118,25 @@
                 <button class="book-monitor-reset-btn" id="book-monitor-reset-btn">Reset</button>
             </div>
 
-            <div id="todo-list" class="todo-list">
+            <div id="todo-list" class="todo-list" aria-label="Task List">
                 <div class="todo-list-top tool-top">
                     <h1 class="todo-list-heading">Task List</h1>
-                    <button id="close-todo-btn" class="material-symbols-outlined close-todo-btn close-btn">close</button>
+                    <button id="close-todo-btn" class="material-symbols-outlined close-todo-btn close-btn" aria-label="Close todo list">close</button>
                 </div>
                 
                 <form id="todo-list-form" class="todo-list-form">
+                    <label for="todo-list-input"></label>
                     <input id="todo-list-input" class="todo-list-input" type="text" placeholder="New Task">
-                    <input type="submit" id="submit-todo" class="submit-todo" value="Add task">
+                    <input type="submit" id="submit-todo" class="submit-todo" value="Add task" aria-label="Add task to list">
                 </form>
     
                 <div id="todo-item-list"></div>
             </div>
 
-            <form id="add-student-form" class="add-student-form display-none">
+            <form id="add-student-form" class="add-student-form display-none" aria-label="Add new student form">
                 <div class="add-student-form-top tool-top">
                     <h1 class="add-student-form-heading">Add New Student</h1>
-                    <button id="close-add-student-form-btn" class="material-symbols-outlined close-todo-btn close-btn">close</button>
+                    <button type="button" id="close-add-student-form-btn" class="material-symbols-outlined close-todo-btn close-btn" aria-label="Close add student form">close</button>
                 </div>
                 <div class="add-student-info-container">
                     <label for="name">Name:</label>
@@ -146,7 +148,7 @@
                     <label for="class-name">Class Name:</label>
                     <input type="text" id="class-name" name="class-name" required>
                     <br>
-                    <button type="submit" class="add-student-btn">Add Student</button>
+                    <button type="submit" class="add-student-btn" aria-label="Submit add student form">Add Student</button>
                 </div>
                
               </form>
