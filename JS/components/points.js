@@ -1,5 +1,6 @@
 import studentData from "../data.js"
 import { render } from "../index.js"
+import { showOverlay, hideOverlay } from "../utils.js"
 
 const addStudentForm = document.getElementById("add-student-form")
 const studentDataFromLocalStorage = JSON.parse(localStorage.getItem("studentData")) || studentData;
@@ -13,18 +14,12 @@ addStudentForm.addEventListener("submit", addStudent)
 // Functions
 function openAddStudentForm() {
     document.getElementById("add-student-form").classList.remove("display-none")
-    document.getElementById("points-grid").style.opacity = 0.4
-
-    // Close other tools
-    document.getElementById("timer").classList.add("display-none")
-    document.getElementById("book-monitor-randomiser").classList.add("display-none")
-    document.getElementById("todo-list").classList.remove("open")
-    
+    showOverlay()
 }
 
 function closeAddStudentForm() {
     document.getElementById("add-student-form").classList.add("display-none")
-    document.getElementById("points-grid").style.opacity = 1
+    hideOverlay()
 }
 
 // Allows user to click avatar to change it.

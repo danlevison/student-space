@@ -1,4 +1,5 @@
 import studentData from "../data.js"
+import { showOverlay, hideOverlay } from "../utils.js"
 
 let selectedStudents = []
 const bookMonitorBtn = document.getElementById("book-monitor-btn")
@@ -18,17 +19,12 @@ window.addEventListener("load", displayRandomStudents)
 // Functions
 function openRandomiser() {
     document.getElementById("book-monitor-randomiser").classList.remove("display-none")
-    document.getElementById("points-grid").style.opacity = 0.4
-
-    // Close other tools
-    document.getElementById("timer").classList.add("display-none")
-    document.getElementById("todo-list").classList.remove("open")
-    document.getElementById("add-student-form").classList.add("display-none")
+    showOverlay()
 }
 
 function closeRandomiser() {
     document.getElementById("book-monitor-randomiser").classList.add("display-none")
-    document.getElementById("points-grid").style.opacity = 1
+    hideOverlay()
 }
 
 function getRandomStudent() {

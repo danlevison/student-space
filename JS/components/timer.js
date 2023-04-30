@@ -1,24 +1,23 @@
+import { showOverlay, hideOverlay } from "../utils.js"
+
 const countdown = document.getElementById("countdown")
-let countdownInput = document.getElementById("countdown-input")
-let time = countdownInput.value * 60 // set countdown time
+const countdownInput = document.getElementById("countdown-input")
+let time = "" // set countdown time
 let countdownInterval = ""
 
+// Event listeners
 document.getElementById("open-timer").addEventListener("click", openTimer)
 document.getElementById("close-timer-btn").addEventListener("click", closeTimer) 
 
+// Functions
 function openTimer() {
     document.getElementById("timer").classList.remove("display-none")
-    document.getElementById("points-grid").style.opacity = 0.4
-
-    // Close other tools
-    document.getElementById("todo-list").classList.remove("open")
-    document.getElementById("book-monitor-randomiser").classList.add("display-none")
-    document.getElementById("add-student-form").classList.add("display-none")
+    showOverlay()
 }
 
 function closeTimer() {
     document.getElementById("timer").classList.add("display-none")
-    document.getElementById("points-grid").style.opacity = 1
+    hideOverlay()
 }
 
 function timer() {

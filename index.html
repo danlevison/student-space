@@ -34,7 +34,7 @@
                         <a class="nav-link" href="index.html">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">School Lunches</a>
+                        <a class="nav-link" href="https://classroom.feedinghungryminds.co.uk/login" target="_blank">School Lunches</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Calendar</a>
@@ -58,7 +58,6 @@
                         <img class="weather-placeholder-icon" src="./images/weather-placeholder.png" alt="Weather icon placeholder" />
                     </div>
                 </div>
-                
             </div>
 
             <div class="points-grid" id="points-grid"></div>
@@ -66,6 +65,7 @@
     </main>
 
     <footer>
+        <div id="overlay" class="overlay"></div>
         <div class="container">
             <nav class="tool-bar" aria-label="Toolbar">
                 <li>
@@ -135,15 +135,15 @@
 
             <form id="add-student-form" class="add-student-form display-none" aria-label="Add new student form">
                 <div class="add-student-form-top tool-top">
-                    <h1 class="add-student-form-heading">Add New Student</h1>
+                    <h1 class="add-student-form-heading">Add Student</h1>
                     <button type="button" id="close-add-student-form-btn" class="material-symbols-outlined close-todo-btn close-btn" aria-label="Close add student form">close</button>
                 </div>
                 <div class="add-student-info-container">
-                    <label for="name">Name:</label>
+                    <label for="name">First name</label>
                     <input type="text" id="name" name="name" required>
                     <br>
-                    <label for="dob">Date of Birth:</label>
-                    <input type="date" id="dob" name="dob" required>
+                    <label for="dob">Date of birth</label>
+                    <input type="date" id="dob" name="dob"required>
                     <br>
                     <label for="class-name">Class Name:</label>
                     <input type="text" id="class-name" name="class-name" required>
@@ -152,6 +152,7 @@
                 </div>
                
               </form>
+              <small class="copyright">&copy; 2023 Daniel Levison. All rights reserved.</small>
         </div>
     </footer>
 

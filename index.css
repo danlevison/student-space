@@ -9,6 +9,7 @@
     --footer-background-clr: linear-gradient(to bottom, #EFEFEF, #F7F7F7);
     --tool-background-clr: radial-gradient( circle 1224px at 10.6% 8.8%,  rgba(255,255,255,1) 0%, rgba(153,202,251,1) 100.2% );
     --tool-border: 2px solid black;
+    --tool-heading-size: 1.2rem;
 }
 
 *, *::before, *::after {
@@ -21,6 +22,17 @@ body {
     font-family: 'Roboto', sans-serif;
     font-size: 16px;
     background-color: var(--background-clr);
+}
+
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(50, 65, 108, 0.8);
+    z-index: 9999;
 }
 
 .container {
@@ -194,7 +206,7 @@ header {
 
 .temperature {
     font-size: 1.7rem;
-    margin-left: -3px;
+    margin-left: -9px;
 }
 
 .bday-msg {
@@ -388,6 +400,14 @@ footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding-bottom: 0.5em;
+    border-bottom: 1px solid rgb(215, 217, 224);
+}
+
+.copyright {
+    display: block;
+    text-align: center;
+    margin-top: 0.2em;
 }
 
 /* Class Monitors */
@@ -405,13 +425,13 @@ footer {
     border: var(--tool-border);
     border-radius: 10px;
     padding: 1em;
+    z-index: 10000;
 }
 
 .book-monitor-heading {
     text-transform: capitalize;
-    font-size: 2rem;
+    font-size: var(--tool-heading-size);
     color: var(--secondary-text-clr);
-    margin: 0 auto;
 }
 
 .book-monitor-container {
@@ -476,6 +496,7 @@ footer {
     border: var(--tool-border);
     border-radius: 10px;
     padding: 1em;
+    z-index: 10000;
 }
 
 .countdown-input {
@@ -490,7 +511,7 @@ footer {
 .countdown {
     text-align: center;
     font-size: 2rem;
-    margin-bottom: 0.5em;
+    margin: 0.5em 0;
 }
 
 .timer-btn-container {
@@ -525,9 +546,9 @@ footer {
     position: fixed;
     top: 0;
     right: -150%;
-    bottom: 54px;
+    bottom: 72px;
     left: auto;
-    z-index: 100;
+    z-index: 10000;
     width: 25%;
     min-width: 400px;
     background-image: var(--tool-background-clr);
@@ -549,6 +570,7 @@ footer {
 }
 
 .todo-list-heading {
+    font-size: var(--tool-heading-size);
     color: var(--secondary-text-clr);
 }
 
@@ -648,17 +670,17 @@ footer {
     display: block;
     width: 90%;
     max-width: 400px;
-    height: 370px;
+    height: 360px;
     background-image: var(--tool-background-clr);
     border: var(--tool-border);
     border-radius: 10px;
     padding: 1em;
+    z-index: 10000;
 }
 
 .add-student-form-heading {
     color: var(--secondary-text-clr);
-    font-size: 2rem;
-    margin: 0 auto;
+    font-size: var(--tool-heading-size);
 }
 
 .add-student-info-container {
@@ -692,6 +714,7 @@ footer {
 .display-none {
     display: none;
 }
+
 
 /* Media Queries */
 
