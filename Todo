@@ -1,9 +1,6 @@
-1. Save book monitors to local storage.
-3. Change position of bday message (maybe the message overwrites the displayMsg)
-4. Improve commenting on JS files and improve readability.
-7. Think about creating render functions that handle the rendering of html only.
-8. Ensure that the favicon.ico file exists in the root directory of your website. If it does not exist, you can create one using an online favicon generator tool or an image editor.
-9. Find a way to center display message with points grid.
-10. Remove HTML classes (timer-top, randomiser-top, todolist-top, add-student-form-top if not needed).
- - Add a .catch block in weather.js
+- Improve commenting on JS files and improve readability.
+- Think about creating render functions that handle the rendering of html only.
+- Ensure that the favicon.ico file exists in the root directory of your website. If it does not exist, you can create one using an online favicon generator tool or an image editor.
+- Find a way to center display message with points grid.
+- Remove HTML classes (timer-top, randomiser-top, todolist-top, add-student-form-top if not needed).
  - fixed undefined when odd number of students in monitors array.

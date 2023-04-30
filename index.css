@@ -328,12 +328,13 @@ header {
     padding: 0.5em;
     left: 0;
     top: 0;
-    cursor: pointer;
 }
 
 .student-avatar-img {
     width: 60px;
     border-radius: 50%;
+    touch-action: manipulation;
+    cursor: pointer;
 }
 
 .student-points {
