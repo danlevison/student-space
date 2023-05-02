@@ -69,4 +69,6 @@ function updateCountdown() {
     }
   }
 
+  timer()
+
 export {openTimer, closeTimer, timer}

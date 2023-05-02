@@ -60,6 +60,21 @@
                 </div>
             </div>
 
+            <div class="dropdown closed display-none">
+                <p class="dropdown-heading">Options<span class="dropdown-icon">∆</span></p>
+                <ul class="menu">
+                    <li>
+                        <button id="remove-all-students">Remove All Students</button>
+                    </li>
+                    <li>
+                        <button id="reset-points">Reset Points</button>
+                    </li>   
+                    <li>
+                        <button id="order-students">Order A-Z</button>
+                    </li>   
+                </ul>
+              </div>
+
             <div class="points-grid" id="points-grid"></div>
         </div>
     </main>
@@ -127,7 +142,7 @@
                 <form id="todo-list-form" class="todo-list-form">
                     <label for="todo-list-input"></label>
                     <input id="todo-list-input" class="todo-list-input" type="text" placeholder="New Task">
-                    <input type="submit" id="submit-todo" class="submit-todo" value="Add task" aria-label="Add task to list">
+                    <input type="submit" id="submit-todo" class="submit-todo" value="Add Task" aria-label="Add task to list">
                 </form>
     
                 <div id="todo-item-list"></div>
@@ -145,10 +160,10 @@
                     <label for="dob">Date of birth</label>
                     <input type="date" id="dob" name="dob"required>
                     <br>
-                    <label for="class-name">Class Name:</label>
+                    <label for="class-name">Class name:</label>
                     <input type="text" id="class-name" name="class-name" required>
                     <br>
-                    <button type="submit" class="add-student-btn" aria-label="Submit add student form">Add Student</button>
+                    <button type="submit" id="add-student-btn" class="add-student-btn" aria-label="Submit add student form">Add Student</button>
                 </div>
                
               </form>

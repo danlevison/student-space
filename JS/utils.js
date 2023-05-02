@@ -1,3 +1,5 @@
+import studentData from "./data.js"
+let studentDataFromLocalStorage = JSON.parse(localStorage.getItem("studentData")) || studentData
 const overlay = document.getElementById('overlay');
 
 function showOverlay() {
@@ -5,10 +7,11 @@ function showOverlay() {
   overlay.style.pointerEvents = "auto"
 }
 
-
 function hideOverlay() {
   overlay.style.display = "none"
   overlay.style.pointerEvents = "none"
 }
 
-export {showOverlay, hideOverlay}
+export {studentDataFromLocalStorage, showOverlay, hideOverlay}
+
+

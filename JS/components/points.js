@@ -1,17 +1,42 @@
 import studentData from "../data.js"
 import { render } from "../index.js"
-import { showOverlay, hideOverlay } from "../utils.js"
+import { studentDataFromLocalStorage, showOverlay, hideOverlay } from "../utils.js"
 
 const addStudentForm = document.getElementById("add-student-form")
-const studentDataFromLocalStorage = JSON.parse(localStorage.getItem("studentData")) || studentData;
 let openenedSettings = null
+let dropdown = document.querySelector('.dropdown')
 
-//Event Listeners 
+//Event Listeners
 document.getElementById("add-student-btn").addEventListener("click", openAddStudentForm)
 document.getElementById("close-add-student-form-btn").addEventListener("click", closeAddStudentForm)
+document.getElementById("remove-all-students").addEventListener("click", removeAllStudents)
 addStudentForm.addEventListener("submit", addStudent)
-
+dropdown.addEventListener("click", toggleOptions)
+  
 // Functions
+function displayOptions() {
+    if(studentDataFromLocalStorage.length > 0) {
+        dropdown.classList.remove("display-none")
+    }
+}
+displayOptions()
+
+function toggleOptions() {
+    if (dropdown.classList.contains('closed')) {
+        dropdown.classList.remove('closed')
+      } else {
+        dropdown.classList.add('closed')    
+      }
+}
+
+function removeAllStudents() {
+    //TODO: Figure out why this has to be re-declared here!!
+    let studentDataFromLocalStorage = JSON.parse(localStorage.getItem("studentData")) || studentData
+    studentDataFromLocalStorage = []
+    localStorage.setItem("studentData", JSON.stringify(studentDataFromLocalStorage))
+    location.reload()
+}
+
 function openAddStudentForm() {
     document.getElementById("add-student-form").classList.remove("display-none")
     showOverlay()
@@ -60,11 +85,22 @@ function handlePointsClick(pointsId) {
 }
 
 // Adds a new student through a form submit
-function addStudent() {
+function addStudent(e) {
+    if(studentDataFromLocalStorage.length > 0) {
+        e.preventDefault()
+    }
+
     const name = document.getElementById("name")
     const dob = document.getElementById("dob")
     const className = document.getElementById("class-name")
+    const existingStudent = studentDataFromLocalStorage.find(student => student.name === name.value)
 
+    if (existingStudent) {
+        alert("A student with the same name already exists!")
+        addStudentForm.reset()
+        return
+    }
+        
     const newStudent = {
         name: name.value,
         dob: dob.value,
@@ -78,14 +114,11 @@ function addStudent() {
     localStorage.setItem("studentData", JSON.stringify(studentDataFromLocalStorage))
     render()
     addStudentForm.reset()
+
+    addStudentForm.addEventListener("submit", addStudent)
 }
 
-// Removes student from studentData //TODO: Consider splitting this function up into html creation and removeStudent
-function removeStudent(removeId) {
-    const targetStudentObj = studentDataFromLocalStorage.find((student) => {
-        return student.uuid === removeId
-    })
-
+function getSettingsHtml(targetStudentObj) {
     // If a settings container is already open, close it before opening a new one
     if(openenedSettings !==null) {
         openenedSettings.classList.add("display-none")
@@ -112,9 +145,7 @@ function removeStudent(removeId) {
    }
 
    removeStudentBtn.onclick = () => {
-        const index = studentDataFromLocalStorage.indexOf(targetStudentObj)
-        studentDataFromLocalStorage.splice(index, 1)
-        localStorage.setItem("studentData", JSON.stringify(studentDataFromLocalStorage))
+        removeStudentFromData(targetStudentObj);
         settingsContainer.style.display = "none" // Hide the settings container after removing the student
         location.reload() // Reloads the page after student is removed to update studentData
         render()
@@ -125,14 +156,36 @@ function removeStudent(removeId) {
 
     // Set the currently open settings container to the new one
     openenedSettings = settingsContainer
-    
     document.body.appendChild(settingsContainer)
 }
 
-// Gets the points system html
-function getStudentHtml() {
+function removeStudentFromData(targetStudentObj) {
+    const index = studentDataFromLocalStorage.indexOf(targetStudentObj)
+    studentDataFromLocalStorage.splice(index, 1)
+    localStorage.setItem("studentData", JSON.stringify(studentDataFromLocalStorage))
+}
+
+function removeStudent(removeId) {
+    const targetStudentObj = studentDataFromLocalStorage.find((student) => {
+        return student.uuid === removeId
+    })
+
+    getSettingsHtml(targetStudentObj);
+}
+
+// Displays grid
+function getGridHtml() {
     let pointsGridHtml = "" 
     const updatedStudentData = studentDataFromLocalStorage
+
+    if (updatedStudentData.length === 0) { 
+        pointsGridHtml = `
+        <div class="default-grid">
+            <h2 class="default-grid-message"> Add your students!</h2>
+            <button class="default-grid-add-student-btn" id="add-student-btn">Add students</button>
+        </div>`
+        return pointsGridHtml
+    }
 
     updatedStudentData.forEach((student) => {
         pointsGridHtml += `
@@ -149,4 +202,4 @@ function getStudentHtml() {
     return pointsGridHtml
 }
 
-export { handleAvatarClick, handlePointsClick, removeStudent, getStudentHtml}
+export { openAddStudentForm, handleAvatarClick, handlePointsClick, removeStudent, getGridHtml}

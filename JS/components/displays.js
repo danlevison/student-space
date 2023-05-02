@@ -1,8 +1,7 @@
 import studentData from "../data.js"
+import { studentDataFromLocalStorage } from "../utils.js"
 
 const toggleHamburger = document.getElementById("hamburger-btn")
-const studentDataFromLocalStorage = JSON.parse(localStorage.getItem("studentData")) || studentData;
-
 toggleHamburger.addEventListener("click", () => {
     const navList = document.getElementById("nav-list")
     navList.classList.toggle("active")
@@ -11,7 +10,7 @@ toggleHamburger.addEventListener("click", () => {
 
 // sets greeting message depending on hour of day
 function setGreetingHtml() {
-    let greeting = "Welcome"
+    let greeting = "Welcome!"
     const currentTime = new Date().getHours()
     studentDataFromLocalStorage.forEach((student) => {
         if(currentTime < 12) {
