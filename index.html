@@ -60,31 +60,15 @@
                 </div>
             </div>
 
-            <div class="dropdown closed display-none">
-                <p class="dropdown-heading">Options<span class="dropdown-icon">∆</span></p>
-                <ul class="menu">
-                    <li>
-                        <button id="remove-all-students">Remove All Students</button>
-                    </li>
-                    <li>
-                        <button id="reset-points">Reset Points</button>
-                    </li>   
-                    <li>
-                        <button id="order-students">Order A-Z</button>
-                    </li>   
-                </ul>
-              </div>
-
             <div class="points-grid" id="points-grid"></div>
         </div>
     </main>
 
     <footer>
-        <div id="overlay" class="overlay"></div>
         <div class="container">
             <nav class="tool-bar" aria-label="Toolbar">
                 <li>
-                    <button id="open-timer" class="material-symbols-outlined tool-bar-btn" aria-label="Open timer">timer</button>
+                    <button id="open-timer-btn" class="material-symbols-outlined tool-bar-btn" aria-label="Open timer">timer</button>
                 </li>
                 <li>
                     <button id="open-randomiser-btn" class="material-symbols-outlined tool-bar-btn" aria-label="Open randomiser">menu_book</button>
@@ -93,11 +77,14 @@
                     <button id="open-todo-btn" class="material-symbols-outlined tool-bar-btn" aria-label="Open to-do list">checklist</button>
                 </li>
                 <li>
-                    <button id="add-student-btn" class="material-symbols-outlined tool-bar-btn" aria-label="Add student">person_add</button>
+                    <button id="open-add-student-form-btn" class="material-symbols-outlined tool-bar-btn" aria-label="Add student">person_add</button>
+                </li>
+                <li>
+                    <button id="open-grid-options-btn" class="material-symbols-outlined tool-bar-btn" aria-label="Add student">settings</button>
                 </li>
             </nav>
 
-            <div id="timer" class="timer display-none">
+            <dialog id="timer" class="timer">
                 <div class="timer-top tool-top">
                     <label for="countdown-input" class="display-none">Enter countdown time in minutes</label>
                     <input id="countdown-input" class="countdown-input" placeholder="0" type="number" min="1">
@@ -117,11 +104,11 @@
                         <span class="material-symbols-outlined">timer</span>
                     </button>
                 </div>
-            </div>
+            </dialog>
 
-            <div id="book-monitor-randomiser" class="book-monitor-randomiser display-none">
+            <dialog id="book-monitor-randomiser" class="book-monitor-randomiser">
                 <div class="randomiser-top tool-top">
-                    <h1 class="book-monitor-heading">Book monitors</h1>
+                    <h1 class="tool-heading">Book monitors</h1>
                     <button id="close-randomiser-btn" class="material-symbols-outlined close-randomiser-btn close-btn" aria-label="Close randomiser">close</button>
                 </div>
                 
@@ -131,11 +118,11 @@
                 </div>
                 <button id="book-monitor-btn" class="book-monitor-btn">Book monitors</button>
                 <button class="book-monitor-reset-btn" id="book-monitor-reset-btn">Reset</button>
-            </div>
+            </dialog>
 
-            <div id="todo-list" class="todo-list" aria-label="Task List">
+            <dialog id="todo-list" class="todo-list" aria-label="Task List">
                 <div class="todo-list-top tool-top">
-                    <h1 class="todo-list-heading">Task List</h1>
+                    <h1 class="tool-heading">Task List</h1>
                     <button id="close-todo-btn" class="material-symbols-outlined close-todo-btn close-btn" aria-label="Close todo list">close</button>
                 </div>
                 
@@ -146,14 +133,14 @@
                 </form>
     
                 <div id="todo-item-list"></div>
-            </div>
+            </dialog>
 
-            <form id="add-student-form" class="add-student-form display-none" aria-label="Add new student form">
+            <dialog id="add-student" class="add-student" aria-label="Add new student">
                 <div class="add-student-form-top tool-top">
-                    <h1 class="add-student-form-heading">Add Student</h1>
+                    <h1 class="tool-heading">Add Student</h1>
                     <button type="button" id="close-add-student-form-btn" class="material-symbols-outlined close-todo-btn close-btn" aria-label="Close add student form">close</button>
                 </div>
-                <div class="add-student-info-container">
+                <form id="add-student-form" class="add-student-form">
                     <label for="name">First name</label>
                     <input type="text" id="name" name="name" required>
                     <br>
@@ -164,10 +151,28 @@
                     <input type="text" id="class-name" name="class-name" required>
                     <br>
                     <button type="submit" id="add-student-btn" class="add-student-btn" aria-label="Submit add student form">Add Student</button>
+                </form>
+            </dialog>
+
+            <dialog id="grid-options" class="grid-options">
+                <div class="grid-options-top tool-top">
+                    <h1 class="tool-heading">Options</h1>
+                    <button id="close-grid-options-btn" class="material-symbols-outlined close-btn" aria-label="Close">close</button>
                 </div>
-               
-              </form>
-              <small class="copyright">&copy; 2023 Daniel Levison. All rights reserved.</small>
+                <ul class="options-menu">
+                    <li>
+                        <button id="remove-all-students" class="options-menu-btn">Remove All Students</button>
+                    </li>
+                    <li>
+                        <button id="reset-points" class="options-menu-btn">Reset Points</button>
+                    </li>   
+                    <li>
+                        <button id="order-students" class="options-menu-btn">Order A-Z</button>
+                    </li>   
+                </ul>
+            </dialog>
+
+            <small class="copyright">&copy; 2023 Daniel Levison. All rights reserved.</small>
         </div>
     </footer>
 

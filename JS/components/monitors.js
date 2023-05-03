@@ -1,9 +1,9 @@
 import studentData from "../data.js"
-import {studentDataFromLocalStorage, showOverlay, hideOverlay } from "../utils.js"
+import { studentDataFromLocalStorage } from "../utils.js"
 
 // Create an empty array to store selected students
 let selectedStudents = []
-
+const randomiser = document.getElementById("book-monitor-randomiser")
 const bookMonitorBtn = document.getElementById("book-monitor-btn")
 const bookMonitorResetBtn = document.getElementById("book-monitor-reset-btn")
 
@@ -16,16 +16,13 @@ bookMonitorResetBtn.addEventListener("click", reset)
 window.addEventListener("load", displayRandomStudents)
 
 // Functions
-// Function to show the randomiser
+
 function openRandomiser() {
-    document.getElementById("book-monitor-randomiser").classList.remove("display-none")
-    showOverlay()
+    randomiser.showModal()
 }
 
-// Function to hide the randomiser
 function closeRandomiser() {
-    document.getElementById("book-monitor-randomiser").classList.add("display-none")
-    hideOverlay()
+    randomiser.close()
 }
 
 // Function to get a random student from the list of students

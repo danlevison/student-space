@@ -1,9 +1,6 @@
-import { showOverlay, hideOverlay } from "../utils.js"
-
 const TodoListContainer = document.getElementById("todo-list")
 const openTodoBtn = document.getElementById("open-todo-btn")
 const closeTodoBtn = document.getElementById("close-todo-btn")
-
 const form = document.getElementById("todo-list-form")
 const todoInput = document.getElementById("todo-list-input")
 const todoItemsListEl = document.getElementById("todo-item-list")
@@ -24,13 +21,13 @@ form.addEventListener("submit", addTodo)
 
 // Functions
 function openTodoList() {
-  TodoListContainer.classList.add("open")
-  showOverlay()
+  TodoListContainer.showModal()
+  
 }
 
 function closeTodoList() {
-  TodoListContainer.classList.remove("open")
-  hideOverlay()
+  TodoListContainer.close()
+  
 }
 
 function addTodo (e) {

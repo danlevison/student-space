@@ -1,32 +1,34 @@
 import studentData from "../data.js"
 import { render } from "../index.js"
-import { studentDataFromLocalStorage, showOverlay, hideOverlay } from "../utils.js"
+import { studentDataFromLocalStorage } from "../utils.js"
 
+const addStudent = document.getElementById("add-student")
 const addStudentForm = document.getElementById("add-student-form")
+const gridOptions = document.getElementById("grid-options")
 let openenedSettings = null
-let dropdown = document.querySelector('.dropdown')
 
 //Event Listeners
-document.getElementById("add-student-btn").addEventListener("click", openAddStudentForm)
+document.getElementById("open-add-student-form-btn").addEventListener("click", openAddStudentForm)
 document.getElementById("close-add-student-form-btn").addEventListener("click", closeAddStudentForm)
+document.getElementById("open-grid-options-btn").addEventListener("click", openOptions)
+document.getElementById("close-grid-options-btn").addEventListener("click", closeOptions)
 document.getElementById("remove-all-students").addEventListener("click", removeAllStudents)
-addStudentForm.addEventListener("submit", addStudent)
-dropdown.addEventListener("click", toggleOptions)
-  
-// Functions
-function displayOptions() {
-    if(studentDataFromLocalStorage.length > 0) {
-        dropdown.classList.remove("display-none")
-    }
-}
-displayOptions()
+addStudentForm.addEventListener("submit", handleAddStudent)
 
-function toggleOptions() {
-    if (dropdown.classList.contains('closed')) {
-        dropdown.classList.remove('closed')
-      } else {
-        dropdown.classList.add('closed')    
-      }
+function openOptions() {
+    gridOptions.showModal()
+}
+
+function closeOptions() {
+    gridOptions.close()
+}
+
+function openAddStudentForm() {
+    addStudent.showModal()
+}
+
+function closeAddStudentForm() {
+    addStudent.close()
 }
 
 function removeAllStudents() {
@@ -35,16 +37,6 @@ function removeAllStudents() {
     studentDataFromLocalStorage = []
     localStorage.setItem("studentData", JSON.stringify(studentDataFromLocalStorage))
     location.reload()
-}
-
-function openAddStudentForm() {
-    document.getElementById("add-student-form").classList.remove("display-none")
-    showOverlay()
-}
-
-function closeAddStudentForm() {
-    document.getElementById("add-student-form").classList.add("display-none")
-    hideOverlay()
 }
 
 // Allows user to click avatar to change it.
@@ -85,7 +77,7 @@ function handlePointsClick(pointsId) {
 }
 
 // Adds a new student through a form submit
-function addStudent(e) {
+function handleAddStudent(e) {
     if(studentDataFromLocalStorage.length > 0) {
         e.preventDefault()
     }
@@ -115,7 +107,7 @@ function addStudent(e) {
     render()
     addStudentForm.reset()
 
-    addStudentForm.addEventListener("submit", addStudent)
+    addStudentForm.addEventListener("submit", handleAddStudent)
 }
 
 function getSettingsHtml(targetStudentObj) {

@@ -1,23 +1,20 @@
-import { showOverlay, hideOverlay } from "../utils.js"
-
+const timerContainer = document.getElementById("timer")
 const countdown = document.getElementById("countdown")
 const countdownInput = document.getElementById("countdown-input")
 let time = "" // set countdown time
 let countdownInterval = ""
 
 // Event listeners
-document.getElementById("open-timer").addEventListener("click", openTimer)
+document.getElementById("open-timer-btn").addEventListener("click", openTimer)
 document.getElementById("close-timer-btn").addEventListener("click", closeTimer) 
 
 // Functions
 function openTimer() {
-    document.getElementById("timer").classList.remove("display-none")
-    showOverlay()
+   timerContainer.showModal()
 }
 
 function closeTimer() {
-    document.getElementById("timer").classList.add("display-none")
-    hideOverlay()
+    timerContainer.close()
 }
 
 function timer() {

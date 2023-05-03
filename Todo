@@ -4,3 +4,9 @@
 - Find a way to center display message with points grid.
 - Remove HTML classes (timer-top, randomiser-top, todolist-top, add-student-form-top if not needed).
  - fixed undefined when odd number of students in monitors array.
+
+
+-put open/close tools in a new file called tools.js?
+
+Consider switching modals to use new dialog element
+ https://www.youtube.com/watch?v=ywtkJkxJsdg
