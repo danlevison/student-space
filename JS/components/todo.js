@@ -22,6 +22,7 @@ form.addEventListener("submit", addTodo)
 // Functions
 function openTodoList() {
   TodoListContainer.showModal()
+  todoInput.focus()
   
 }
 

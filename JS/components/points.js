@@ -12,7 +12,11 @@ document.getElementById("open-add-student-form-btn").addEventListener("click", o
 document.getElementById("close-add-student-form-btn").addEventListener("click", closeAddStudentForm)
 document.getElementById("open-grid-options-btn").addEventListener("click", openOptions)
 document.getElementById("close-grid-options-btn").addEventListener("click", closeOptions)
+
 document.getElementById("remove-all-students").addEventListener("click", removeAllStudents)
+document.getElementById("reset-points").addEventListener("click", resetStudentPoints)
+document.getElementById("order-students").addEventListener("click", sortStudentsAlphabetically)
+
 addStudentForm.addEventListener("submit", handleAddStudent)
 
 function openOptions() {
@@ -24,7 +28,10 @@ function closeOptions() {
 }
 
 function openAddStudentForm() {
-    addStudent.showModal()
+    if (!addStudent.hasAttribute("open")) {
+        addStudent.showModal() 
+    }
+    document.getElementById("name").focus()
 }
 
 function closeAddStudentForm() {
@@ -32,11 +39,27 @@ function closeAddStudentForm() {
 }
 
 function removeAllStudents() {
-    //TODO: Figure out why this has to be re-declared here!!
+    //TODO: Figure out why this has to be re-declared here!
     let studentDataFromLocalStorage = JSON.parse(localStorage.getItem("studentData")) || studentData
     studentDataFromLocalStorage = []
     localStorage.setItem("studentData", JSON.stringify(studentDataFromLocalStorage))
     location.reload()
+}
+
+function resetStudentPoints() {
+    studentDataFromLocalStorage.forEach(student => {
+        student.points = 0
+    })
+    render()
+    localStorage.setItem("studentData", JSON.stringify(studentDataFromLocalStorage))
+    closeOptions()
+}
+
+function sortStudentsAlphabetically() {
+    studentDataFromLocalStorage.sort((a, b) => a.name.localeCompare(b.name))
+    render()
+    localStorage.setItem("studentData", JSON.stringify(studentDataFromLocalStorage))
+    closeOptions()
 }
 
 // Allows user to click avatar to change it.

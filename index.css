@@ -8,7 +8,7 @@
     --points-box-clr: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
     --footer-background-clr: linear-gradient(to bottom, #EFEFEF, #F7F7F7);
     --tool-background-clr: radial-gradient( circle 1224px at 10.6% 8.8%,  rgba(255,255,255,1) 0%, rgba(153,202,251,1) 100.2% );
-    --tool-border: 2px solid black;
+    --tool-border: none;
     --tool-border-radius: 10px;
     --tool-heading-size: 1.2rem;
 }
@@ -46,6 +46,7 @@ button {
     font-family: inherit;
     cursor: pointer;
     touch-action: manipulation;
+    user-select: none;
 }
 
 /* Typography */
@@ -562,17 +563,13 @@ dialog::backdrop {
 /* To do list */
 
 .todo-list {
-    /* top: 0;
-    right: -150%;
-    bottom: 72px;
-    left: auto; */
     width: 25%;
     min-width: 400px;
+    height: 100%;
     background-image: var(--tool-background-clr);
     border: var(--tool-border);
     border-radius: var(--tool-border-radius);
     padding: 1em;
-    overflow: scroll;
     overflow-x: hidden;
     transition: transform 0.35s ease-in-out, right 0.35s ease-in-out;
   }
@@ -716,18 +713,15 @@ dialog::backdrop {
 
 .grid-options {
     width: 350px;
-    height: 187px;
+    height: 182px;
     border: var(--tool-border);
     border-radius: var(--tool-border-radius);
     background-image: var(--tool-background-clr);
+    overflow: hidden;
 }
 
 .grid-options-top {
     padding: 1em 1em 0.5em 1em;
-}
-
-.options-menu {
-    width: 100%;
 }
 
 .options-menu li {

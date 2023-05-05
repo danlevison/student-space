@@ -3,10 +3,7 @@
 - Ensure that the favicon.ico file exists in the root directory of your website. If it does not exist, you can create one using an online favicon generator tool or an image editor.
 - Find a way to center display message with points grid.
 - Remove HTML classes (timer-top, randomiser-top, todolist-top, add-student-form-top if not needed).
- - fixed undefined when odd number of students in monitors array.
+- fixed undefined when odd number of students in monitors array.
 
 
 -put open/close tools in a new file called tools.js?
-
-Consider switching modals to use new dialog element
- https://www.youtube.com/watch?v=ywtkJkxJsdg

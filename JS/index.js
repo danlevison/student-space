@@ -1,5 +1,5 @@
 import studentData from "./data.js"
-import { setGreetingHtml, displayDate, getBdayHtml } from "./components/displays.js"
+import { setGreetingHtml, displayDate } from "./components/displays.js"
 import { fetchWeather } from "./components/weather.js"
 import { openAddStudentForm, handleAvatarClick, handlePointsClick, removeStudent, getGridHtml } from "./components/points.js"
 import { openRandomiser, closeRandomiser, getRandomStudent } from "./components/monitors.js"
@@ -10,7 +10,6 @@ window.onload = () => {
     setGreetingHtml()
     displayDate()
     fetchWeather()
-    getBdayHtml()
     render()
 }
 

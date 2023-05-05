@@ -51,5 +51,6 @@ function getBdayHtml() {
         }
     })
 }
+getBdayHtml()
 
-export { setGreetingHtml, displayDate, getBdayHtml}
+export { setGreetingHtml, displayDate }

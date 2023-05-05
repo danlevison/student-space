@@ -19,6 +19,7 @@ window.addEventListener("load", displayRandomStudents)
 
 function openRandomiser() {
     randomiser.showModal()
+    bookMonitorBtn.focus()
 }
 
 function closeRandomiser() {

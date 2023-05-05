@@ -10,7 +10,7 @@ document.getElementById("close-timer-btn").addEventListener("click", closeTimer)
 
 // Functions
 function openTimer() {
-   timerContainer.showModal()
+  timerContainer.showModal()
 }
 
 function closeTimer() {
