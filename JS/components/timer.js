@@ -31,9 +31,13 @@ function timer() {
     })
 
     startBtn.addEventListener("click", () => {
-       countdownInterval = setInterval(updateCountdown, 1000)
-       startBtn.style.display = "none"
-       pauseBtn.style.display = "inline-block"
+      if(countdownInput.value  < 1) {
+        alert("Enter a time in minutes")
+      } else {
+        countdownInterval = setInterval(updateCountdown, 1000)
+        startBtn.style.display = "none"
+        pauseBtn.style.display = "inline-block"
+      }       
     })
 
     pauseBtn.addEventListener("click", () => {
