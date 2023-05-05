@@ -713,7 +713,7 @@ dialog::backdrop {
 
 .grid-options {
     width: 350px;
-    height: 182px;
+    height: 208px;
     border: var(--tool-border);
     border-radius: var(--tool-border-radius);
     background-image: var(--tool-background-clr);
@@ -730,6 +730,8 @@ dialog::backdrop {
 }
 
 .options-menu-btn {
+    font-size: 1rem;
+    color: #000;
     width: 100%;
     border: none;
     padding: 1em;
