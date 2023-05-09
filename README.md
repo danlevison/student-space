@@ -7,8 +7,10 @@ I created Student Space as a personal project to provide a one-stop platform for
 ## Features
 
 - Points and Rewards: Teachers can reward students with points for their achievements, behavior, or participation in class. Students can accumulate points and redeem them for rewards after reaching a certain amount, as set by the teacher.
-- Daily Tools: The website includes a timer that can be used for various classroom activities, a todo-list to manage tasks and reminders, and a randomiser to choose students for specific tasks or roles.
-- User-friendly Interface: The website offers an intuitive and visually appealing interface that is easy to navigate and provides an efficient way for teachers to manage rewards and daily classroom tasks.
+- Daily Tools: The website includes a timer that can be used for various classroom activities, a task-list to manage tasks and reminders, and a randomiser to choose students for specific tasks or roles.
+- Additional Tools: A simple form input to add students and an options button to allow users to order student names from A-Z, remove all students, and reset all students points.
+- Calendar: The website has a calendar, which can be used to schedule and keep track of events such as school holidays and special events.
+- User-friendly Interface: The website offers an intuitive and visually appealing interface that is easy to navigate and provides an efficient way for teachers to manage rewards and daily classroom tasks. 
 
 ## Installation
 
