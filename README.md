@@ -38,5 +38,5 @@ The following technologies were used to build Student Space:
 ## Contact
 
 - Author: Daniel Levison
-- Email: danlev1997@gmail.com
-- GitHub: https://github.com/DanLev97
+- Email: dan.ejlevison@gmail.com
+- GitHub: https://github.com/danlevison
