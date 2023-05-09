@@ -1,6 +1,6 @@
 import studentData from "../data.js"
-import { render } from "../index.js"
 import { studentDataFromLocalStorage } from "../utils.js"
+import { render } from "../index.js"
 
 const addStudent = document.getElementById("add-student")
 const addStudentForm = document.getElementById("add-student-form")

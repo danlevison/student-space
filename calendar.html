@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="calendar.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Google Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <!-- fullCalendar -->
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.7/index.global.min.js'></script>
+    <title>Student Space | Calendar</title>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav class="navbar" aria-label="Site Menu">
+                <div class="logo-container">
+                    <a href="index.html" aria-label="Student Space home page"><img class="logo" src="/images/student space logo.png" alt="Student Space logo"></a>
+                </div>
+
+                <button class="hamburger-btn" id="hamburger-btn" aria-label="Menu">
+                    <div class="line"></div>
+                    <div class="line"></div>
+                    <div class="line"></div>
+                </button>
+
+                <ul class="nav-list" id="nav-list">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="calendar.html">Calendar</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://classroom.feedinghungryminds.co.uk/login" target="_blank">School Lunches</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Rewards</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="calendar-container">
+        <dialog id="calendar-event-modal" class="calendar-event-modal" data-modal>
+            <div class="add-event-form-top tool-top">
+                <h1 class="tool-heading">Add Event</h1>
+                <button type="button" id="close-add-event-form-btn" class="material-symbols-outlined close-todo-btn close-btn" aria-label="Close add student form">close</button>
+            </div>
+            <form id="add-event-form" class="add-event-form">
+                <label for="eventTitle">Event Title:</label>
+                <input type="text" id="eventTitle" name="eventTitle">
+    
+                <label for="eventDate">Event Date:</label>
+                <input type="date" id="eventDate" name="eventDate">
+    
+                <label for="eventStartTime">Event Start Time:</label>
+                 <input type="time" id="eventStartTime" name="eventStartTime">
+    
+                <label for="eventEndTime">Event End Time:</label>
+                <input type="time" id="eventEndTime" name="eventEndTime">
+    
+                <button id="addEventButton" class="add-event-button" type="button">Add Event</button>
+            </form>
+        </dialog>
+       
+        <div class="calendar" id='calendar'></div>
+    </main>
+   
+    <script src="./JS/index.js" type="module"></script>
+
+    <script>
+        
+document.addEventListener('DOMContentLoaded', function() {
+  const calendarEl = document.getElementById('calendar')
+  const calendar = new FullCalendar.Calendar(calendarEl, {
+    // Calendar options
+    height: "100%",
+    weekends: false,
+    nowIndicator: true,
+    initialView: 'timeGridWeek',
+    headerToolbar: {
+        left: 'title',
+        center: 'addEventButton',
+        right: 'prev,next today',
+    },
+    customButtons: {
+        addEventButton: {
+            text: "Add Event",
+            click: openNewEventModal,  
+        }
+    },
+    events: [],
+    eventColor: "#5065A8",
+    eventBackgroundColor: "#5065A8"
+  })
+
+  calendar.render();
+
+const calendarEventModal = document.getElementById("calendar-event-modal")
+const addEventButton = document.getElementById('addEventButton')
+const addEventForm = document.getElementById("add-event-form")
+addEventButton.addEventListener('click', addNewEvent)
+document.getElementById("close-add-event-form-btn").addEventListener("click", closeNewEventModal)
+
+function openNewEventModal() {
+    calendarEventModal.showModal()
+    document.getElementById("eventTitle").focus()
+}
+
+function closeNewEventModal() {
+    calendarEventModal.close()
+}
+
+function addNewEvent() {
+    // Get event title and date from input elements
+    const eventTitle = document.getElementById('eventTitle').value
+    const eventDate = document.getElementById('eventDate').value
+    const eventStartTime = document.getElementById('eventStartTime').value
+    const eventEndTime = document.getElementById("eventEndTime").value
+
+    // Concatenate date and time strings
+    const startDateString = eventDate + 'T' + eventStartTime
+    const endDateString = eventDate + 'T' + eventEndTime
+
+    // Create event object
+    const newEvent = {
+      title: eventTitle,
+      start: startDateString,
+      end: endDateString
+    }
+
+    // Add event to calendar
+    calendar.addEvent(newEvent);
+    addEventForm.reset()
+  }
+
+})
+
+    </script>
+</body>
+</html>

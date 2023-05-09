@@ -1,4 +1,4 @@
-import studentData from "../data.js"
+// import studentData from "../data.js"
 import { studentDataFromLocalStorage } from "../utils.js"
 
 // Create an empty array to store selected students

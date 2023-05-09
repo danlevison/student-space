@@ -1,11 +1,20 @@
-import studentData from "../data.js"
+// import studentData from "../data.js"
 import { studentDataFromLocalStorage } from "../utils.js"
 
+const calendar = document.getElementById("calendar")
 const toggleHamburger = document.getElementById("hamburger-btn")
+
 toggleHamburger.addEventListener("click", () => {
     const navList = document.getElementById("nav-list")
     navList.classList.toggle("active")
     toggleHamburger.classList.toggle("active")
+    
+// Pushes down calendar on mobile view when nav is open
+    if(navList.classList.contains("active")) {
+        calendar.style.transform = `translateY(168px)`
+    } else {
+        calendar.style.transform = 'translateY(0)';
+    }
 })
 
 // sets greeting message depending on hour of day

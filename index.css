@@ -4,7 +4,7 @@
     --icon-clr: #5065A8;
     --icon-clr-hover: rgb(232, 199, 13);
     --background-clr: rgba(253,199,141,1);
-    --grid-box-clr: radial-gradient( circle 1224px at 10.6% 8.8%,  rgba(255,255,255,1) 0%, rgba(153,202,251,1) 100.2% );
+    --grid-box-clr: #F5F5F5;
     --points-box-clr: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
     --footer-background-clr: linear-gradient(to bottom, #EFEFEF, #F7F7F7);
     --tool-background-clr: radial-gradient( circle 1224px at 10.6% 8.8%,  rgba(255,255,255,1) 0%, rgba(153,202,251,1) 100.2% );
@@ -265,7 +265,7 @@ header {
     font-weight: 700;
     color: var(--secondary-text-clr);   
     padding: 2em;
-    background-image: var(--grid-box-clr);
+    background-color: var(--grid-box-clr);
     -webkit-box-shadow: 0px 0px 7px 0px rgba(0,0,0,0.75);
     -moz-box-shadow: 0px 0px 7px 0px rgba(0,0,0,0.75);
     box-shadow: 0px 0px 7px 0px rgba(0,0,0,0.75);   

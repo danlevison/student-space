@@ -39,7 +39,7 @@ function addTodo (e) {
 
   // Validate input
   if(!todo) {
-    alert("Please enter a todo")
+    alert("Please enter a task")
     return
   }
 

@@ -2,6 +2,8 @@ import studentData from "./data.js"
 let studentDataFromLocalStorage = JSON.parse(localStorage.getItem("studentData")) || studentData
 const modal = document.querySelectorAll("[data-modal]")
 
+
+// Outside click to close modals
 modal.forEach((modal) => {
     modal.addEventListener("click", e => {
         const dialogDimensions = modal.getBoundingClientRect()

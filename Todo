@@ -1,9 +1,13 @@
 - Improve commenting on JS files and improve readability.
 - Think about creating render functions that handle the rendering of html only.
-- Ensure that the favicon.ico file exists in the root directory of your website. If it does not exist, you can create one using an online favicon generator tool or an image editor.
-- Find a way to center display message with points grid.
+- Ensure that the favicon.ico file exists in the root directory of your website. If it does not exist, you can create one using an online favicon          generator tool or an image editor.
 - Remove HTML classes (timer-top, randomiser-top, todolist-top, add-student-form-top if not needed).
-- fixed undefined when odd number of students in monitors array.
 
 
 -put open/close tools in a new file called tools.js?
+
+- On default loading page have a set class name button e.g. of new default page: 
+                                        Get Started!
+                                <button>Set Class Name</button>
+                                <button>Add Students</button>
+                                
