@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Google Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <title>Student Space | Home</title>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav class="navbar" aria-label="Site Menu">
+                <div class="logo-container">
+                    <a href="index.html" aria-label="Student Space home page"><img class="logo" src="/images/student space logo.png" alt="Student Space logo"></a>
+                </div>
+
+                <button class="hamburger-btn" id="hamburger-btn" aria-label="Menu">
+                    <div class="line"></div>
+                    <div class="line"></div>
+                    <div class="line"></div>
+                </button>
+
+                <ul class="nav-list" id="nav-list">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="calendar.html">Calendar</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://classroom.feedinghungryminds.co.uk/login" target="_blank">School Lunches</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Rewards</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="container">
+            <div class="hero-section">
+                <h1 class="bday-msg" id="bday-msg"></h1>
+                <div class="hero-info">
+                    <h1 class="greeting-message" id="greeting-message">Welcome!</h1>
+                    <p class="display-date" id="display-date"></p>
+                    <div class="weather-results" id="weather-results">
+                        <img class="weather-placeholder-icon" src="./images/weather-placeholder.png" alt="Weather icon placeholder" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="points-grid" id="points-grid"></div>
+
+            <dialog class="set-class-modal" id="set-class-modal" data-modal>
+                <div class="set-class-top tool-top">
+                    <h1 class="tool-heading">Class Name</h1>
+                    <button id="close-set-class-btn" class="material-symbols-outlined close-timer-btn close-btn" aria-label="Close set class">close</button>
+                </div>
+                <form class="set-class-form">
+                    <label for="class-name-input"></label>
+                    <input type="text" id="class-name-input" placeholder="Enter your class name" />
+                    <button class="set-class-btn" id="set-class-name-btn">Save Class Name</button>
+                </form>
+                
+            </dialog>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <nav class="tool-bar" aria-label="Toolbar">
+                <li>
+                    <button id="open-timer-btn" class="material-symbols-outlined tool-bar-btn" aria-label="Open timer">timer</button>
+                </li>
+                <li>
+                    <button id="open-randomiser-btn" class="material-symbols-outlined tool-bar-btn" aria-label="Open randomiser">menu_book</button>
+                </li>
+                <li>
+                    <button id="open-todo-btn" class="material-symbols-outlined tool-bar-btn" aria-label="Open to-do list">checklist</button>
+                </li>
+                <li>
+                    <button id="open-add-student-form-btn" class="material-symbols-outlined tool-bar-btn" aria-label="Add student">person_add</button>
+                </li>
+                <li>
+                    <button id="open-grid-options-btn" class="material-symbols-outlined tool-bar-btn" aria-label="Add student">settings</button>
+                </li>
+            </nav>
+
+            <dialog id="timer" class="timer" data-modal>
+                <div class="timer-top tool-top">
+                    <label for="countdown-input" class="display-none">Enter countdown time in minutes</label>
+                    <input id="countdown-input" class="countdown-input" placeholder="0" type="number" min="1">
+                    <button id="close-timer-btn" class="material-symbols-outlined close-timer-btn close-btn" aria-label="Close timer">close</button>
+                </div>
+                
+                <p id="countdown" class="countdown">00:00</p>
+
+                <div class="timer-btn-container">
+                    <button class="timer-btn timer-btn-control timer-btn-start">
+                        <span class="material-symbols-outlined">play_arrow</span>
+                    </button>
+                    <button class="timer-btn timer-btn-pause">
+                        <span class="material-symbols-outlined">pause</span>
+                    </button>
+                    <button class="timer-btn timer-btn-reset">
+                        <span class="material-symbols-outlined">timer</span>
+                    </button>
+                </div>
+            </dialog>
+
+            <dialog id="book-monitor-randomiser" class="book-monitor-randomiser" data-modal>
+                <div class="randomiser-top tool-top">
+                    <h1 class="tool-heading">Book monitors</h1>
+                    <button id="close-randomiser-btn" class="material-symbols-outlined close-randomiser-btn close-btn" aria-label="Close randomiser">close</button>
+                </div>
+                
+                <div class="book-monitor-container" id="book-monitor-container">
+                    <p id="book-monitor-1" class="book-monitor">📔</p>
+                    <p id="book-monitor-2" class="book-monitor">📔</p>
+                </div>
+                <button id="book-monitor-btn" class="book-monitor-btn">Book monitors</button>
+                <button class="book-monitor-reset-btn" id="book-monitor-reset-btn">Reset</button>
+            </dialog>
+
+            <dialog id="todo-list" class="todo-list" aria-label="Task List" data-modal>
+                <div class="todo-list-top tool-top">
+                    <h1 class="tool-heading">Task List</h1>
+                    <button id="close-todo-btn" class="material-symbols-outlined close-todo-btn close-btn" aria-label="Close todo list">close</button>
+                </div>
+                
+                <form id="todo-list-form" class="todo-list-form">
+                    <label for="todo-list-input"></label>
+                    <input id="todo-list-input" class="todo-list-input" type="text" placeholder="New Task">
+                    <input type="submit" id="submit-todo" class="submit-todo" value="Add Task" aria-label="Add task to list">
+                </form>
+    
+                <div id="todo-item-list"></div>
+            </dialog>
+
+            <dialog id="add-student" class="add-student" aria-label="Add new student" data-modal>
+                <div class="add-student-form-top tool-top">
+                    <h1 class="tool-heading">Add Student</h1>
+                    <button type="button" id="close-add-student-form-btn" class="material-symbols-outlined close-todo-btn close-btn" aria-label="Close add student form">close</button>
+                </div>
+                <form id="add-student-form" class="add-student-form">
+                    <label for="name">First name</label>
+                    <input type="text" id="name" name="name" required>
+                    <br>
+                    <label for="dob">Date of birth</label>
+                    <input type="date" id="dob" name="dob"required>
+                    <br>
+                    <button type="submit" id="add-student-btn" class="add-student-btn" aria-label="Submit add student form">Add Student</button>
+                </form>
+            </dialog>
+
+            <dialog id="grid-options" class="grid-options" data-modal>
+                <div class="grid-options-top tool-top">
+                    <h1 class="tool-heading">Options</h1>
+                    <button id="close-grid-options-btn" class="material-symbols-outlined close-btn" aria-label="Close">close</button>
+                </div>
+                <ul class="options-menu">
+                    <li>
+                        <button id="remove-all-students" class="options-menu-btn">Remove All Students</button>
+                    </li>
+                    <li>
+                        <button id="reset-points" class="options-menu-btn">Reset Points</button>
+                    </li>   
+                    <li>
+                        <button id="order-students" class="options-menu-btn">Order A-Z</button>
+                    </li>   
+                </ul>
+            </dialog>
+
+            <small class="copyright">&copy; 2023 Daniel Levison. All rights reserved.</small>
+        </div>
+    </footer>
+
+    <script src="./JS/index.js" type="module"></script>
+</body>
+</html>
+
