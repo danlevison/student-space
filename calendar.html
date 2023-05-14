@@ -57,41 +57,63 @@
                 <button type="button" id="close-add-event-form-btn" class="material-symbols-outlined close-todo-btn close-btn" aria-label="Close add student form">close</button>
             </div>
             <form id="add-event-form" class="add-event-form">
-                <label for="eventTitle">Event Title:</label>
+                <label for="eventTitle">Event Name:</label>
                 <input type="text" id="eventTitle" name="eventTitle">
     
-                <label for="eventDate">Event Date:</label>
-                <input type="date" id="eventDate" name="eventDate">
-    
-                <label for="eventStartTime">Event Start Time:</label>
-                 <input type="time" id="eventStartTime" name="eventStartTime">
-    
-                <label for="eventEndTime">Event End Time:</label>
-                <input type="time" id="eventEndTime" name="eventEndTime">
-    
-                <button id="addEventButton" class="add-event-button" type="button">Add Event</button>
+                <div class="add-event-form-dates">
+                    <div class="event-start">
+                        <label for="eventStartDate">Starts</label>
+                        <input class="form-date" type="date" id="eventStartDate" name="eventStartDate">
+                        <label for="eventStartTime"></label>
+                        <input type="time" id="eventStartTime" name="eventStartTime">
+                    </div>
+                    
+                    <div class="event-end">
+                        <label for="eventEndDate">Ends</label>
+                        <input class="form-date" type="date" id="eventEndDate" name="eventEndDate">
+                        <label for="eventEndTime"></label>
+                        <input type="time" id="eventEndTime" name="eventEndTime">
+                    </div>
+                    
+                </div>
+                <button id="addEventButton" class="add-event-button" type="button">Save Event</button>
             </form>
         </dialog>
+
+        <dialog id="event-info-modal" class="event-info-modal" data-modal></dialog>
        
-        <div class="calendar" id='calendar'></div>
+        <div class="calendar" id="calendar"></div>
     </main>
    
     <script src="./JS/index.js" type="module"></script>
 
     <script>
-        
-document.addEventListener('DOMContentLoaded', function() {
-  const calendarEl = document.getElementById('calendar')
-  const calendar = new FullCalendar.Calendar(calendarEl, {
+
+const calendarEventModal = document.getElementById("calendar-event-modal")
+const addEventButton = document.getElementById("addEventButton")
+const addEventForm = document.getElementById("add-event-form")
+const eventInfoModal = document.getElementById("event-info-modal")
+const calendarEl = document.getElementById("calendar")
+const savedEvents = JSON.parse(localStorage.getItem("calendarEvents")) || []
+
+const calendar = new FullCalendar.Calendar(calendarEl, {
     // Calendar options
     height: "100%",
     weekends: false,
     nowIndicator: true,
-    initialView: 'timeGridWeek',
+    selectable: true,
+    initialView: "dayGridMonth",
     headerToolbar: {
-        left: 'title',
-        center: 'addEventButton',
-        right: 'prev,next today',
+        left: "dayGridMonth,dayGridWeek,dayGridDay",
+        center: "title",
+        right: 'addEventButton,prev,next today',
+    },
+    buttonText: {
+        today: "Today",
+        month: "Month",
+        week: "Week",
+        day: "Day",
+        list: "List"
     },
     customButtons: {
         addEventButton: {
@@ -99,17 +121,31 @@ document.addEventListener('DOMContentLoaded', function() {
             click: openNewEventModal,  
         }
     },
-    events: [],
+    events: savedEvents,
     eventColor: "#5065A8",
-    eventBackgroundColor: "#5065A8"
+    eventBackgroundColor: "#5065A8",
+    eventClick: function(info) {
+        console.log(info.event.start)
+        const title = info.event.title
+        const startInfo = info.event.start
+        const endInfo = info.event.end
+
+        eventInfoModal.innerHTML = `
+            <div class="event-info-modal-top tool-top">
+                <h1 class="tool-heading">${title}</h1>
+                <button type="button" onclick="closeEventInfoModal()" id="close-add-event-form-btn" class="material-symbols-outlined close-todo-btn close-btn" aria-label="Close add student form">close</button>
+            </div>
+            <div class="event-info-modal-content">
+                <p class="start-info"><span>Starts</span> ${startInfo}</p>
+                <p class="end-info"><span>Ends</span> ${endInfo}</p>
+                <button class="delete-event-btn" onclick="deleteEvent('${info.event.id}')">Delete Event</button>
+            </div>`
+
+        eventInfoModal.showModal()
+    }
   })
 
-  calendar.render();
-
-const calendarEventModal = document.getElementById("calendar-event-modal")
-const addEventButton = document.getElementById('addEventButton')
-const addEventForm = document.getElementById("add-event-form")
-addEventButton.addEventListener('click', addNewEvent)
+addEventButton.addEventListener("click", addNewEvent)
 document.getElementById("close-add-event-form-btn").addEventListener("click", closeNewEventModal)
 
 function openNewEventModal() {
@@ -121,31 +157,60 @@ function closeNewEventModal() {
     calendarEventModal.close()
 }
 
+function closeEventInfoModal() {
+    console.log("hi")
+    eventInfoModal.close()
+}
+
 function addNewEvent() {
     // Get event title and date from input elements
-    const eventTitle = document.getElementById('eventTitle').value
-    const eventDate = document.getElementById('eventDate').value
-    const eventStartTime = document.getElementById('eventStartTime').value
+    const eventTitle = document.getElementById("eventTitle").value
+    const eventStartDate = document.getElementById("eventStartDate").value
+    const eventEndDate = document.getElementById("eventEndDate").value
+    const eventStartTime = document.getElementById("eventStartTime").value
     const eventEndTime = document.getElementById("eventEndTime").value
 
     // Concatenate date and time strings
-    const startDateString = eventDate + 'T' + eventStartTime
-    const endDateString = eventDate + 'T' + eventEndTime
+    const startDateString = eventStartDate + "T" + eventStartTime
+    const endDateString = eventEndDate + "T" + eventEndTime
 
     // Create event object
     const newEvent = {
-      title: eventTitle,
-      start: startDateString,
-      end: endDateString
+        id: crypto.randomUUID(),
+        title: eventTitle,
+        start: startDateString,
+        end: endDateString
     }
 
     // Add event to calendar
-    calendar.addEvent(newEvent);
+    calendar.addEvent(newEvent)
+
     addEventForm.reset()
+    calendarEventModal.close()
+
+    savedEvents.push(newEvent)
+    localStorage.setItem("calendarEvents", JSON.stringify(savedEvents))
   }
 
-})
+  function deleteEvent(eventId) {
+    console.log("clicked")
+    // Remove event from the calendar
+    const event = calendar.getEventById(eventId)
 
+    if(event) {
+        event.remove()
+        eventInfoModal.close()
+    }
+
+    // Remove event from the savedEvents array
+    savedEvents.splice(savedEvents.findIndex(e => e.id === eventId), 1)
+
+    // Update localStorage
+    localStorage.setItem("calendarEvents", JSON.stringify(savedEvents))
+}
+
+calendar.render()
+ 
     </script>
 </body>
 </html>

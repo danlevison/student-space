@@ -1,34 +1,49 @@
 // import studentData from "../data.js"
 import { studentDataFromLocalStorage } from "../utils.js"
 
-const calendar = document.getElementById("calendar")
-const toggleHamburger = document.getElementById("hamburger-btn")
+let greeting = ""
+const greetingMessage = document.getElementById("greeting-message")
+const currentTime = new Date().getHours()
+const classNameInput = document.getElementById("class-name-input")
+const savedClassName = JSON.parse(localStorage.getItem("className"))
 
-toggleHamburger.addEventListener("click", () => {
-    const navList = document.getElementById("nav-list")
-    navList.classList.toggle("active")
-    toggleHamburger.classList.toggle("active")
-    
-// Pushes down calendar on mobile view when nav is open
-    if(navList.classList.contains("active")) {
-        calendar.style.transform = `translateY(168px)`
+document.getElementById("set-class-name-btn").addEventListener("click", setGreetingHtml)
+
+// Update the greeting message when the page loads
+document.addEventListener("DOMContentLoaded", () => {
+    if (savedClassName) {
+        if (currentTime < 12) {
+            greeting = `Good morning, ${savedClassName}!`
+        } else {
+            greeting = `Good afternoon, ${savedClassName}!`
+        }
     } else {
-        calendar.style.transform = 'translateY(0)';
+        greeting = "Welcome!"
     }
+    
+    greetingMessage.innerHTML = greeting;
 })
 
-// sets greeting message depending on hour of day
-function setGreetingHtml() {
-    let greeting = "Welcome!"
-    const currentTime = new Date().getHours()
-    studentDataFromLocalStorage.forEach((student) => {
-        if(currentTime < 12) {
-            greeting = `Good morning, ${student.className}!`
+// Update the greeting message and save the class name when the button is clicked
+function setGreetingHtml(e) {
+    e.preventDefault()
+    const className = classNameInput.value
+
+    if (className) {
+        if (currentTime < 12) {
+            greeting = `Good morning, ${className}!`
         } else {
-            greeting = `Good afternoon, ${student.className}!`
+            greeting = `Good afternoon, ${className}!`
         }
-    })
-    document.getElementById("greeting-message").innerHTML = greeting
+        
+        localStorage.setItem("className", JSON.stringify(className))
+    } else {
+        greeting = "Welcome!"
+    }
+    
+    greetingMessage.innerHTML = greeting
+    document.getElementById("set-class-modal").close()
+    
 }
 
 function displayDate() {

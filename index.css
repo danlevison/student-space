@@ -49,6 +49,16 @@ button {
     user-select: none;
 }
 
+input {
+    border: 1px solid black;
+}
+
+input:focus {
+    border: 1px solid var(--icon-clr);
+    box-shadow: 0 1px 1px rgba(229, 103, 23, 0.075) inset, 0 0 8px rgba(80,101,168, 0.2);
+    outline: 0 none;
+}
+
 /* Typography */
 
 h1 {
@@ -160,7 +170,7 @@ header {
     order: 1;
     color: var(--text-clr);
     text-transform: capitalize;
-    /* margin-right: 2.6em; */
+    /* margin-right: 1.5em; */
 }
 
 .display-date {
@@ -229,12 +239,18 @@ header {
     color: var(--text-clr);
 }
 
+.default-grid-btn-container {
+    display: flex;
+    gap: 0.5em;
+}
+
 .default-grid-message {
     font-size: 2.25rem;
     text-transform: capitalize;
 }
 
-.default-grid-add-student-btn {
+.default-grid-add-student-btn,
+.default-grid-set-class-btn {
     color: var(--text-clr);
     background-color: var(--icon-clr);
     border: none;
@@ -246,7 +262,50 @@ header {
 }
 
 .default-grid-add-student-btn:hover,
-.default-grid-add-student-btn:focus {
+.default-grid-add-student-btn:focus,
+.default-grid-set-class-btn:hover,
+.default-grid-set-class-btn:focus {
+    opacity: 0.7;
+}
+
+.set-class-modal {
+    width: 90%;
+    max-width: 320px;
+    min-height: 175px;
+    background-image: var(--tool-background-clr);
+    border: var(--tool-border);
+    border-radius: var(--tool-border-radius);
+    padding: 1em;
+}
+
+.set-class-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.set-class-form input {
+    width: 100%;
+    border-radius: 10px;
+    padding: 1em;
+    margin-top: 1em;
+}
+
+.set-class-btn {
+    width: 55%;
+    margin-left: auto;
+    font-size: 1rem;
+    font-weight: 400;
+    background-color: var(--icon-clr);
+    color: var(--text-clr);
+    border: none;
+    border-radius: 10px;
+    padding: 0.6em;
+    margin-top: 1.3em;
+}
+
+.set-class-btn:focus,
+.set-class-btn:hover {
     opacity: 0.7;
 }
 
@@ -328,7 +387,7 @@ header {
     border-radius: 10px;
     padding: 1em;
     width: 200px;
-    height: 150px;
+    min-height: 150px;
 }
 
 .removeStudentBtn {
@@ -454,7 +513,7 @@ dialog::backdrop {
 .book-monitor-randomiser {
     width: 90%;
     max-width: 400px;
-    height: 250px;
+    min-height: 250px;
     background-image: var(--tool-background-clr);
     border: var(--tool-border);
     border-radius: var(--tool-border-radius);
@@ -674,7 +733,7 @@ dialog::backdrop {
 .add-student {
     width: 90%;
     max-width: 400px;
-    height: 360px;
+    min-height: 280px;
     background-image: var(--tool-background-clr);
     border: var(--tool-border);
     border-radius: var(--tool-border-radius);
@@ -688,20 +747,22 @@ dialog::backdrop {
     margin-top: 1em;
 }
 
-.add-student-form > input {
+.add-student-form input {
     width: 100%;
     border-radius: 10px;
-    padding: 0.5em;
+    padding: 1em;
 }
 
 .add-student-btn {
+    width: 35%;
+    margin-left: auto;
     font-size: 1rem;
-    font-weight: 700;
+    font-weight: 400;
     background-color: var(--icon-clr);
     color: var(--text-clr);
     border: none;
     border-radius: 10px;
-    padding: 1em;
+    padding: 0.6em;
 }
 
 .add-student-btn:hover,
@@ -713,7 +774,7 @@ dialog::backdrop {
 
 .grid-options {
     width: 350px;
-    height: 208px;
+    min-height: 208px;
     border: var(--tool-border);
     border-radius: var(--tool-border-radius);
     background-image: var(--tool-background-clr);
@@ -836,6 +897,10 @@ dialog::backdrop {
         font-size: 1.4rem;
     }
 
+    .set-class-btn {
+        width: 100%;
+    }
+
     .todo-list {
         width: 35%;
         min-width: 265px;
@@ -852,5 +917,20 @@ dialog::backdrop {
 
     .add-student-form {
         text-align: left;
+    }
+
+    .add-student-btn {
+        width: 100%;
+    }
+}
+
+@media (max-width: 320px) {
+
+    .default-grid-set-class-btn {
+        font-size: 0.8rem;
+    }
+
+    .default-grid-add-student-btn {
+        font-size: 0.8rem;
     }
 }

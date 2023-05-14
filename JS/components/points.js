@@ -5,6 +5,7 @@ import { render } from "../index.js"
 const addStudent = document.getElementById("add-student")
 const addStudentForm = document.getElementById("add-student-form")
 const gridOptions = document.getElementById("grid-options")
+const setClassModal = document.getElementById("set-class-modal")
 let openenedSettings = null
 
 //Event Listeners
@@ -12,6 +13,7 @@ document.getElementById("open-add-student-form-btn").addEventListener("click", o
 document.getElementById("close-add-student-form-btn").addEventListener("click", closeAddStudentForm)
 document.getElementById("open-grid-options-btn").addEventListener("click", openOptions)
 document.getElementById("close-grid-options-btn").addEventListener("click", closeOptions)
+document.getElementById("close-set-class-btn").addEventListener("click", closeSetClassName)
 
 document.getElementById("remove-all-students").addEventListener("click", removeAllStudents)
 document.getElementById("reset-points").addEventListener("click", resetStudentPoints)
@@ -36,6 +38,15 @@ function openAddStudentForm() {
 
 function closeAddStudentForm() {
     addStudent.close()
+}
+
+function openSetClassName() {
+    setClassModal.showModal()    
+    document.getElementById("class-name-input").focus()
+}
+
+function closeSetClassName() {
+    setClassModal.close()
 }
 
 function removeAllStudents() {
@@ -107,7 +118,6 @@ function handleAddStudent(e) {
 
     const name = document.getElementById("name")
     const dob = document.getElementById("dob")
-    const className = document.getElementById("class-name")
     const existingStudent = studentDataFromLocalStorage.find(student => student.name === name.value)
 
     if (existingStudent) {
@@ -119,10 +129,9 @@ function handleAddStudent(e) {
     const newStudent = {
         name: name.value,
         dob: dob.value,
-        className: className.value,
         points: 0,
         avatar: ["images/sorting-hat.png"],
-        uuid: Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15)
+        uuid: crypto.randomUUID()
     }
 
     studentDataFromLocalStorage.push(newStudent)
@@ -188,6 +197,8 @@ function removeStudent(removeId) {
     getSettingsHtml(targetStudentObj);
 }
 
+
+
 // Displays grid
 function getGridHtml() {
     let pointsGridHtml = "" 
@@ -196,8 +207,11 @@ function getGridHtml() {
     if (updatedStudentData.length === 0) { 
         pointsGridHtml = `
         <div class="default-grid">
-            <h2 class="default-grid-message"> Add your students!</h2>
-            <button class="default-grid-add-student-btn" id="add-student-btn">Add students</button>
+            <h2 class="default-grid-message">Get Started!</h2>
+            <div class="default-grid-btn-container">
+                <button class="default-grid-set-class-btn" id="set-class-btn">Set class name</button>
+                <button class="default-grid-add-student-btn" id="add-student-btn">Add students</button>
+            </div>
         </div>`
         return pointsGridHtml
     }
@@ -217,4 +231,4 @@ function getGridHtml() {
     return pointsGridHtml
 }
 
-export { openAddStudentForm, handleAvatarClick, handlePointsClick, removeStudent, getGridHtml}
+export { openSetClassName, openAddStudentForm, handleAvatarClick, handlePointsClick, removeStudent, getGridHtml}

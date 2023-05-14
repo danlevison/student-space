@@ -1,9 +1,39 @@
-.calendar-container {
-    position: fixed;
-    top: 87px;
-    left: 0;
-    right: 0;
-    bottom: 0;
+:root {
+    --fc-small-font-size: .85em;
+    --fc-page-bg-color: #fff;
+    --fc-neutral-bg-color: hsla(0,0%,82%,.3);
+    --fc-neutral-text-color: grey;
+    --fc-border-color: #ddd;
+    --fc-button-text-color: #fff;
+    --fc-button-bg-color: #5065A8;
+    --fc-button-border-color: #5065A8;
+    --fc-button-hover-bg-color: #1e2b37;
+    --fc-button-hover-border-color: #1a252f;
+    --fc-button-active-bg-color: #1a252f;
+    --fc-button-active-border-color: #151e27;
+    --fc-event-bg-color: #3788d8;
+    --fc-event-border-color: #3788d8;
+    --fc-event-text-color: #fff;
+    --fc-event-selected-overlay-color: rgba(0,0,0,.25);
+    --fc-more-link-bg-color: #d0d0d0;
+    --fc-more-link-text-color: inherit;
+    --fc-event-resizer-thickness: 8px;
+    --fc-event-resizer-dot-total-width: 8px;
+    --fc-event-resizer-dot-border-width: 1px;
+    --fc-non-business-color: hsla(0,0%,84%,.3);
+    --fc-bg-event-color: #8fdf82;
+    --fc-bg-event-opacity: 0.3;
+    --fc-highlight-color: rgba(188,232,241,.3);
+    --fc-today-bg-color: rgba(255,220,40,.15);
+    --fc-now-indicator-color: red;
+}
+
+html, body {
+    min-height: 100%;
+}
+
+header {
+    margin: 0;
 }
 
 .fc .fc-toolbar.fc-header-toolbar {
@@ -14,14 +44,37 @@
     padding: 1em;
 }
 
+.fc-button-group {
+    gap: 0.3em
+}
+
+.fc .fc-button {
+    border-radius: 10px;
+}
+
+.fc-direction-ltr .fc-button-group>.fc-button:not(:first-child) {
+    border-radius: 10px;
+}
+
+.fc-direction-ltr .fc-button-group>.fc-button:not(:last-child) {
+    border-radius: 10px;
+}
+
 .calendar {
+    position: absolute;
+    width: 100%;
     background-color: var(--grid-box-clr);
+    padding: 1em;
+}
+
+.fc-event {
+    cursor: pointer;
 }
 
 .calendar-event-modal {
     width: 90%;
-    max-width: 360px;
-    height: 450px;
+    max-width: 570px;
+    height: 350px;
     background-image: radial-gradient( circle 1224px at 10.6% 8.8%,  rgba(255,255,255,1) 0%, rgba(153,202,251,1) 100.2% );
     border: none;
     border-radius: 10px;
@@ -42,23 +95,120 @@
 }
 
 .add-event-form input {
-    padding: 0.5em;
+    padding: 1em;
     margin-bottom: 1em;
+    border-radius: 10px;
 }
 
-.add-event-button {
+.add-event-button, .delete-event-btn{
+    width: 30%;
+    margin-left: auto;
     font-size: 1rem;
-    font-weight: 700;
+    font-weight: 400;
     background-color: #5065A8;
     color: #fff;
     border: none;
     border-radius: 10px;
-    padding: 1em;
+    padding: 0.6em;
+    margin-top: 1em;
 }
 
-@media (max-width: 620px) {
+.add-event-button:hover,
+.add-event-button:focus {
+    opacity: 0.7;
+}
+
+.add-event-form-dates {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.event-start, .event-end {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.form-date {
+    width: 70%;
+}
+
+/* Event Info Modal */
+
+.event-info-modal {
+    width: 90%;
+    max-width: 520px;
+    height: 200px;
+    background-image: radial-gradient( circle 1224px at 10.6% 8.8%,  rgba(255,255,255,1) 0%, rgba(153,202,251,1) 100.2% );
+    border: none;
+    border-radius: 10px;
+    padding: 0.8em;
+}
+
+.event-info-modal-content {
+    display: flex;
+    flex-direction: column;
+}
+
+span {
+    font-weight: bold;
+}
+
+.start-info {
+    margin-top: 1em;
+}
+
+.end-info {
+    margin-top: 1em;
+}
+
+.delete-event-btn {
+    padding: 0.5em;
+    margin-top: 1em;
+}
+
+.delete-event-btn:hover,
+.delete-event-btn:focus {
+    opacity: 0.7;
+}
+
+@media (max-width: 740px) {
     .fc-header-toolbar {
         flex-direction: column;
         gap: 0.5em;
+    }
+} 
+
+@media (max-width: 560px) {
+
+    .event-start, .event-end {
+        flex-direction: column;
+    }
+
+    .calendar-event-modal {
+        height: 500px;
+    }
+
+    .add-event-form input {
+        width: 100%;
+    }
+
+    .event-info-modal {
+        height: 250px;
+    }
+}
+
+@media (max-width: 430px) {
+    .add-event-button {
+        width: 100%;
+        margin: 0 auto;
+    }
+
+    .delete-event-btn {
+        width: 100%;
+        margin: 1em auto;
     }
 }

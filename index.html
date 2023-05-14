@@ -52,7 +52,7 @@
             <div class="hero-section">
                 <h1 class="bday-msg" id="bday-msg"></h1>
                 <div class="hero-info">
-                    <h1 class="greeting-message" id="greeting-message"></h1>
+                    <h1 class="greeting-message" id="greeting-message">Welcome!</h1>
                     <p class="display-date" id="display-date"></p>
                     <div class="weather-results" id="weather-results">
                         <img class="weather-placeholder-icon" src="./images/weather-placeholder.png" alt="Weather icon placeholder" />
@@ -61,6 +61,19 @@
             </div>
 
             <div class="points-grid" id="points-grid"></div>
+
+            <dialog class="set-class-modal" id="set-class-modal" data-modal>
+                <div class="set-class-top tool-top">
+                    <h1 class="tool-heading">Class Name</h1>
+                    <button id="close-set-class-btn" class="material-symbols-outlined close-timer-btn close-btn" aria-label="Close set class">close</button>
+                </div>
+                <form class="set-class-form">
+                    <label for="class-name-input"></label>
+                    <input type="text" id="class-name-input" placeholder="Enter your class name" />
+                    <button class="set-class-btn" id="set-class-name-btn">Save Class Name</button>
+                </form>
+                
+            </dialog>
         </div>
     </main>
 
@@ -146,9 +159,6 @@
                     <br>
                     <label for="dob">Date of birth</label>
                     <input type="date" id="dob" name="dob"required>
-                    <br>
-                    <label for="class-name">Class name:</label>
-                    <input type="text" id="class-name" name="class-name" required>
                     <br>
                     <button type="submit" id="add-student-btn" class="add-student-btn" aria-label="Submit add student form">Add Student</button>
                 </form>
