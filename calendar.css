@@ -74,7 +74,7 @@ header {
 .calendar-event-modal {
     width: 90%;
     max-width: 570px;
-    height: 350px;
+    min-height: 350px;
     background-image: radial-gradient( circle 1224px at 10.6% 8.8%,  rgba(255,255,255,1) 0%, rgba(153,202,251,1) 100.2% );
     border: none;
     border-radius: 10px;
@@ -141,7 +141,7 @@ header {
 .event-info-modal {
     width: 90%;
     max-width: 520px;
-    height: 200px;
+    min-height: 190px;
     background-image: radial-gradient( circle 1224px at 10.6% 8.8%,  rgba(255,255,255,1) 0%, rgba(153,202,251,1) 100.2% );
     border: none;
     border-radius: 10px;
@@ -167,7 +167,7 @@ span {
 
 .delete-event-btn {
     padding: 0.5em;
-    margin-top: 1em;
+    margin-top: 1.3em;
 }
 
 .delete-event-btn:hover,
@@ -197,7 +197,7 @@ span {
     }
 
     .event-info-modal {
-        height: 250px;
+        height: 230px;
     }
 }
 
@@ -207,8 +207,17 @@ span {
         margin: 0 auto;
     }
 
+    .event-info-modal {
+        height: 230px;
+    }
+
     .delete-event-btn {
         width: 100%;
-        margin: 1em auto;
+    }
+}
+
+@media (max-width: 300px) {
+    .event-info-modal {
+        height: 270px;
     }
 }

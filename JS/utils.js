@@ -3,11 +3,14 @@ let studentDataFromLocalStorage = JSON.parse(localStorage.getItem("studentData")
 const toggleHamburger = document.getElementById("hamburger-btn")
 const modal = document.querySelectorAll("[data-modal]")
 
-toggleHamburger.addEventListener("click", () => {
+function toggleMenu() {
   const navList = document.getElementById("nav-list")
-  navList.classList.toggle("active")
-  toggleHamburger.classList.toggle("active")
-})
+
+  toggleHamburger.addEventListener("click", () => {
+    navList.classList.toggle("active")
+    toggleHamburger.classList.toggle("active")
+  })
+}
 
 // Outside click to close modals
 modal.forEach((modal) => {
@@ -23,6 +26,8 @@ modal.forEach((modal) => {
         }
       })
 })
+
+toggleMenu()
 
 export { studentDataFromLocalStorage }
 

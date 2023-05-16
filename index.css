@@ -62,7 +62,7 @@ input:focus {
 /* Typography */
 
 h1 {
-    font-size: 2.25rem;
+    font-size: 3rem;
 }
 
 .material-symbols-outlined {
@@ -160,8 +160,8 @@ header {
 
 .hero-info {
     display: flex;
-    flex-direction: row;
-    justify-content: space-around;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
     margin-bottom: 1.5em;
 }
@@ -170,7 +170,6 @@ header {
     order: 1;
     color: var(--text-clr);
     text-transform: capitalize;
-    /* margin-right: 1.5em; */
 }
 
 .display-date {
@@ -182,7 +181,7 @@ header {
 .weather-results {
     order: 2;
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
     align-items: center;
     flex-wrap: wrap;
     color: var(--text-clr);
@@ -191,7 +190,7 @@ header {
 
 .weather-location {
     width: 100%;
-    text-align: right;
+    text-align: center;
     font-size: 1.3rem;
     font-weight: 400;
     margin-top: -20px;
@@ -222,8 +221,8 @@ header {
     background: -webkit-linear-gradient(to right, #4BC0C8, #C779D0, #FEAC5E); 
     background: linear-gradient(to right, #4BC0C8, #C779D0, #FEAC5E);
     border-radius: 15px;
-    padding: 0.05em;
-    margin: 0 auto;
+    padding: 0.1em;
+    margin: 0.5em auto;
 
 }
 
@@ -245,7 +244,7 @@ header {
 }
 
 .default-grid-message {
-    font-size: 2.25rem;
+    font-size: 2.5rem;
     text-transform: capitalize;
 }
 
@@ -319,6 +318,10 @@ header {
 }
 
 .student-div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     position: relative;
     text-align: center;
     font-weight: 700;
@@ -333,7 +336,8 @@ header {
 }
 
 .student-name {
-    font-size: 1em;
+    max-width: 100px;
+    font-size: 1rem;
 }
 
 .points-icon-btn {
@@ -359,7 +363,8 @@ header {
 
 .settings-btn {
     position: absolute;
-    right: 14px;
+    top: 75%;
+    right: 12px;
     color: var(--secondary-text-clr);
     border: none;
     background-color: transparent;
@@ -811,13 +816,13 @@ dialog::backdrop {
 
 /* Media Queries */
 
-@media (max-width: 900px) {
+@media (max-width: 600px) {
     body {
         text-align: center;
     }
 
     h1 {
-        font-size: 1.9rem;
+        font-size: 2rem;
     }
 
     .logo {
@@ -895,6 +900,10 @@ dialog::backdrop {
 
     .temperature {
         font-size: 1.4rem;
+    }
+
+    .default-grid-message {
+        font-size: 2rem;
     }
 
     .set-class-btn {

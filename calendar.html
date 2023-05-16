@@ -42,9 +42,6 @@
                     <li class="nav-item">
                         <a class="nav-link" href="https://classroom.feedinghungryminds.co.uk/login" target="_blank">School Lunches</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Rewards</a>
-                    </li>
                 </ul>
             </nav>
         </div>
@@ -85,7 +82,7 @@
         <div class="calendar" id="calendar"></div>
     </main>
    
-    <script src="./JS/index.js" type="module"></script>
+    <script src="./JS/utils.js" type="module"></script>
 
     <script>
 
@@ -125,7 +122,6 @@ const calendar = new FullCalendar.Calendar(calendarEl, {
     eventColor: "#5065A8",
     eventBackgroundColor: "#5065A8",
     eventClick: function(info) {
-        console.log(info.event.start)
         const title = info.event.title
         const startInfo = info.event.start
         const endInfo = info.event.end
@@ -158,7 +154,6 @@ function closeNewEventModal() {
 }
 
 function closeEventInfoModal() {
-    console.log("hi")
     eventInfoModal.close()
 }
 
@@ -193,7 +188,6 @@ function addNewEvent() {
   }
 
   function deleteEvent(eventId) {
-    console.log("clicked")
     // Remove event from the calendar
     const event = calendar.getEventById(eventId)
 
