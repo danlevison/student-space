@@ -1,8 +1,8 @@
 // import studentData from "./data.js"
-import { setGreetingHtml, displayDate } from "./components/displays.js"
+import { setGreetingHtml, displayDate } from "./components/hero.js"
 import { fetchWeather } from "./components/weather.js"
-import { openSetClassName, openAddStudentForm, handleAvatarClick, handlePointsClick, removeStudent, getGridHtml } from "./components/points.js"
-import { openRandomiser, closeRandomiser, getRandomStudent } from "./components/monitors.js"
+import { openSetClassName, openAddStudentForm, handleAvatarClick, handlePointsClick, removeStudent, getGridHtml } from "./components/grid.js"
+import { openRandomiser, closeRandomiser, getRandomStudent } from "./components/randomiser.js"
 import { openTimer, closeTimer, timer } from "./components/timer.js"
 import { openTodoBtn } from "./components/todo.js"
 
