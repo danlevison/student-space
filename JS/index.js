@@ -1,4 +1,3 @@
-// import studentData from "./data.js"
 import { setGreetingHtml, displayDate } from "./components/hero.js"
 import { fetchWeather } from "./components/weather.js"
 import { openSetClassName, openAddStudentForm, handleAvatarClick, handlePointsClick, removeStudent, getGridHtml } from "./components/grid.js"

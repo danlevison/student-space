@@ -1,4 +1,3 @@
-import studentData from "../data.js"
 import { studentDataFromLocalStorage } from "../utils.js"
 import { render } from "../index.js"
 
@@ -51,7 +50,7 @@ function closeSetClassName() {
 
 function removeAllStudents() {
     //TODO: Figure out why this has to be re-declared here!
-    let studentDataFromLocalStorage = JSON.parse(localStorage.getItem("studentData")) || studentData
+    let studentDataFromLocalStorage = JSON.parse(localStorage.getItem("studentData")) || []
     studentDataFromLocalStorage = []
     localStorage.setItem("studentData", JSON.stringify(studentDataFromLocalStorage))
     location.reload()
