@@ -1,4 +1,3 @@
-// import studentData from "../data.js"
 import { studentDataFromLocalStorage } from "../utils.js"
 
 let greeting = ""

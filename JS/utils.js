@@ -1,5 +1,4 @@
-import studentData from "./data.js"
-let studentDataFromLocalStorage = JSON.parse(localStorage.getItem("studentData")) || studentData
+let studentDataFromLocalStorage = JSON.parse(localStorage.getItem("studentData")) || []
 const toggleHamburger = document.getElementById("hamburger-btn")
 const modal = document.querySelectorAll("[data-modal]")
 
