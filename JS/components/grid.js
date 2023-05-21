@@ -5,7 +5,8 @@ const addStudent = document.getElementById("add-student")
 const addStudentForm = document.getElementById("add-student-form")
 const gridOptions = document.getElementById("grid-options")
 const setClassModal = document.getElementById("set-class-modal")
-let openenedSettings = null
+const studentSettingsModal = document.getElementById("student-settings-modal")
+const removeStudentBtn = document.getElementById("removeStudentBtn")
 
 //Event Listeners
 document.getElementById("open-add-student-form-btn").addEventListener("click", openAddStudentForm)
@@ -13,12 +14,14 @@ document.getElementById("close-add-student-form-btn").addEventListener("click", 
 document.getElementById("open-grid-options-btn").addEventListener("click", openOptions)
 document.getElementById("close-grid-options-btn").addEventListener("click", closeOptions)
 document.getElementById("close-set-class-btn").addEventListener("click", closeSetClassName)
+document.getElementById("close-student-settings-btn").addEventListener("click", closeStudentSettings)
 
 document.getElementById("remove-all-students").addEventListener("click", removeAllStudents)
 document.getElementById("reset-points").addEventListener("click", resetStudentPoints)
 document.getElementById("order-students").addEventListener("click", sortStudentsAlphabetically)
 
 addStudentForm.addEventListener("submit", handleAddStudent)
+removeStudentBtn.addEventListener("click", handleRemoveStudent)
 
 function openOptions() {
     gridOptions.showModal()
@@ -48,6 +51,14 @@ function closeSetClassName() {
     setClassModal.close()
 }
 
+function openStudentSettings() {
+    studentSettingsModal.showModal()
+}
+
+function closeStudentSettings() {
+    studentSettingsModal.close()
+}
+
 function removeAllStudents() {
     //TODO: Figure out why this has to be re-declared here!
     let studentDataFromLocalStorage = JSON.parse(localStorage.getItem("studentData")) || []
@@ -72,19 +83,51 @@ function sortStudentsAlphabetically() {
     closeOptions()
 }
 
+function handleRemoveStudent() {
+    const targetStudentId = removeStudentBtn.getAttribute("data-student-id")
+
+    // Filter for the target student object with the passed-in ID
+    const targetStudentObj = studentDataFromLocalStorage.find((student) => {
+        return student.uuid === targetStudentId
+    })
+
+    if (targetStudentObj) {
+        // Remove the target student object from the array
+        const index = studentDataFromLocalStorage.indexOf(targetStudentObj)
+        if (index > -1) {
+            studentDataFromLocalStorage.splice(index, 1)
+
+            // Update local storage with the new array without the target student object
+            localStorage.setItem("studentData", JSON.stringify(studentDataFromLocalStorage))
+            location.reload()
+        }
+    }
+}
+
+// Remove a student based on their ID
+function removeStudent(removeId) {
+    // Filter for the target student object with the passed-in ID
+    const targetStudentObj = studentDataFromLocalStorage.find((student) => {
+        return student.uuid === removeId
+    })
+
+    removeStudentBtn.innerHTML = `Remove ${targetStudentObj.name}`
+    removeStudentBtn.setAttribute("data-student-id", removeId)
+}
+
 // Allows user to click avatar to change it.
 function handleAvatarClick(avatarId) {
     const targetStudentObj = studentDataFromLocalStorage.filter((student) => {
-        return student.uuid === avatarId;
+        return student.uuid === avatarId
     })[0]
 
     if (!targetStudentObj.avatarIndex) {
-        targetStudentObj.avatarIndex = 0;
+        targetStudentObj.avatarIndex = 0
     }
 
     const avatarIconArr = ["images/sorting-hat.png","images/harry-potter.png","images/hermione.png","images/draco-malfoy.png","images/lord-voldemort.png", "images/ron-weasley.png", "images/albus-dumbledore.png", "images/minerva-mcgonagall.png", "images/dobby.png"]
-    targetStudentObj.avatarIndex = (targetStudentObj.avatarIndex + 1) % avatarIconArr.length;
-    targetStudentObj.avatar = avatarIconArr[targetStudentObj.avatarIndex];
+    targetStudentObj.avatarIndex = (targetStudentObj.avatarIndex + 1) % avatarIconArr.length
+    targetStudentObj.avatar = avatarIconArr[targetStudentObj.avatarIndex]
 
     localStorage.setItem("studentData", JSON.stringify(studentDataFromLocalStorage))
 
@@ -141,63 +184,6 @@ function handleAddStudent(e) {
     addStudentForm.addEventListener("submit", handleAddStudent)
 }
 
-function getSettingsHtml(targetStudentObj) {
-    // If a settings container is already open, close it before opening a new one
-    if(openenedSettings !==null) {
-        openenedSettings.classList.add("display-none")
-    }
-
-   // Creates the settings container
-   const settingsContainer = document.createElement("div")
-   settingsContainer.classList.add("settings-container")
-   
-   // Creates the remove student button inside the settings container
-   const removeStudentBtn = document.createElement("button")
-   removeStudentBtn.classList.add("removeStudentBtn")
-   removeStudentBtn.innerText = `Remove ${targetStudentObj.name}`
-
-    // Creates the button to close the settings container
-   const closeBtn = document.createElement("button")
-   closeBtn.classList.add("close-btn")
-   closeBtn.classList.add("close-settings-btn")
-   closeBtn.classList.add("material-symbols-outlined")
-   closeBtn.innerText = "close"
-
-   closeBtn.onclick = () => {
-        settingsContainer.classList.add("display-none")
-   }
-
-   removeStudentBtn.onclick = () => {
-        removeStudentFromData(targetStudentObj);
-        settingsContainer.style.display = "none" // Hide the settings container after removing the student
-        location.reload() // Reloads the page after student is removed to update studentData
-        render()
-   }
- 
-    settingsContainer.appendChild(removeStudentBtn)
-    settingsContainer.appendChild(closeBtn)
-
-    // Set the currently open settings container to the new one
-    openenedSettings = settingsContainer
-    document.body.appendChild(settingsContainer)
-}
-
-function removeStudentFromData(targetStudentObj) {
-    const index = studentDataFromLocalStorage.indexOf(targetStudentObj)
-    studentDataFromLocalStorage.splice(index, 1)
-    localStorage.setItem("studentData", JSON.stringify(studentDataFromLocalStorage))
-}
-
-function removeStudent(removeId) {
-    const targetStudentObj = studentDataFromLocalStorage.find((student) => {
-        return student.uuid === removeId
-    })
-
-    getSettingsHtml(targetStudentObj);
-}
-
-
-
 // Displays grid
 function getGridHtml() {
     let pointsGridHtml = "" 
@@ -224,10 +210,10 @@ function getGridHtml() {
             </div>
             <button class="fa-solid fa-award points-icon-btn" data-point="${student.uuid}" aria-label="Award points"></button>
             <p id="student-points" class="student-points">${student.points}</p>
-            <button class="settings-btn material-symbols-outlined" data-remove="${student.uuid}" aria-label="Settings">settings</button>
+            <button id="settings-btn" class="settings-btn material-symbols-outlined" data-settings="${student.uuid}" aria-label="Settings">settings</button>
         </div>`  
     })
     return pointsGridHtml
 }
 
-export { openSetClassName, openAddStudentForm, handleAvatarClick, handlePointsClick, removeStudent, getGridHtml}
+export { openSetClassName, openAddStudentForm, openStudentSettings, removeStudent, handleAvatarClick, handlePointsClick, getGridHtml}
