@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
         greeting = "Welcome!"
     }
     
-    greetingMessage.innerHTML = greeting;
+    greetingMessage.innerHTML = greeting
 })
 
 // Update the greeting message and save the class name when the button is clicked
@@ -74,6 +74,7 @@ function getBdayHtml() {
         }
     })
 }
+
 getBdayHtml()
 
 export { setGreetingHtml, displayDate }

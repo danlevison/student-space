@@ -62,14 +62,20 @@
             <dialog class="set-class-modal" id="set-class-modal" data-modal>
                 <div class="set-class-top tool-top">
                     <h1 class="tool-heading">Class Name</h1>
-                    <button id="close-set-class-btn" class="material-symbols-outlined close-timer-btn close-btn" aria-label="Close set class">close</button>
+                    <button id="close-set-class-btn" class="material-symbols-outlined close-btn" aria-label="Close set class">close</button>
                 </div>
                 <form class="set-class-form">
                     <label for="class-name-input"></label>
                     <input type="text" id="class-name-input" placeholder="Enter your class name" />
                     <button class="set-class-btn" id="set-class-name-btn">Save Class Name</button>
                 </form>
-                
+            </dialog>
+
+            <dialog id="student-settings-modal" class="student-settings-modal" data-modal>
+                <div class="set-class-top tool-top">
+                    <button id="close-student-settings-btn" class="material-symbols-outlined close-student-settings-btn close-btn" aria-label="Close set class">close</button>
+                </div>
+                <button id="removeStudentBtn" class="removeStudentBtn"></button>
             </dialog>
         </div>
     </main>
@@ -90,7 +96,7 @@
                     <button id="open-add-student-form-btn" class="material-symbols-outlined tool-bar-btn" aria-label="Add student" title="Add student">person_add</button>
                 </li>
                 <li>
-                    <button id="open-grid-options-btn" class="material-symbols-outlined tool-bar-btn" aria-label="Add student" title="Settings">settings</button>
+                    <button id="open-grid-options-btn" class="material-symbols-outlined tool-bar-btn" aria-label="Add student" title="Options">settings</button>
                 </li>
             </nav>
 
